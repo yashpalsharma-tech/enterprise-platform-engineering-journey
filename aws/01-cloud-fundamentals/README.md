@@ -1,9 +1,9 @@
-What cloud computing is.
+**What cloud computing is?**
 Cloud computing is the on-demand delivery of computing services over internet, 
 allowing organizations to provision, scale and pay for the resources as needed instead of owning and managing
 physical infrastructure.
 
-Why organizations adopt cloud computing.
+**Why organizations adopt cloud computing.**
 Organizations are adopting cloud computing because of the following advantages.
 1. Fast Provisioning.
 2. Faster delivery of application
@@ -14,14 +14,14 @@ Organizations are adopting cloud computing because of the following advantages.
 7. Reduced upfront infrastructure investment.
 8. Managed services that reduce operational efforts.
 9. 
-The five characteristics of cloud computing.
+**The five characteristics of cloud computing.**
 1. On demand self service.
 2. Broad Network access.
 3. Resource pooling.
 4. Rapid elasticity
 5. Measured service.
-A comparison between your current enterprise environment and AWS.
-
+6. 
+**A comparison between your current enterprise environment and AWS.**
 1. VMware VM             -   EC2 instance.
 2. SAN Storage           -   EBS volume
 3. NAS                   -   EFS
@@ -31,3 +31,5 @@ A comparison between your current enterprise environment and AWS.
 7. DNS Server            -   Route 53
 8. Monitoring Platform   -   AWS Cloudwatch
 9. Back ups              -   AWS backups
+
+
