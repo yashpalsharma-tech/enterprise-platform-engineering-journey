@@ -1,9 +1,6 @@
 **Architecture Diagram**
 ```mermaid
 
-graph TD
-
-
 Users Worldwide 
         │
         ▼
