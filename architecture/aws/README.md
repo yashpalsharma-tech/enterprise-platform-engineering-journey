@@ -1,6 +1,7 @@
 **Architecture Diagram**
-
-Users Worldwide
+'''mermaid
+graph TD
+Users Worldwide 
         │
         ▼
  CloudFront
@@ -14,3 +15,4 @@ EC2 (AZ-A)   EC2 (AZ-B)
         │
         ▼
 RDS Multi-AZ
+'''
