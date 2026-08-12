@@ -1,6 +1,8 @@
 **Architecture Diagram**
 ```mermaid
+
 graph TD
+
 
 Users Worldwide 
         │
@@ -16,4 +18,5 @@ EC2 (AZ-A)   EC2 (AZ-B)
         │
         ▼
 RDS Multi-AZ
+
 ```
