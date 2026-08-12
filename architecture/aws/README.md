@@ -17,3 +17,18 @@ C --> E
 D --> F
 E --> F
 ```
+
+
+```mermaid
+flowchart TD
+
+User[Developer]
+
+User --> IAM[IAM User]
+
+IAM --> Group[Developers Group]
+
+Group --> Policy[EC2 Read Only Policy]
+
+Policy --> AWS[EC2 Instances]
+```
