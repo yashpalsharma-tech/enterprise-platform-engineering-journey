@@ -6,9 +6,9 @@ graph TD
 A[Users Worldwide]
 B[Amazon CloudFront]
 C[Application Load Balancer]
-D[EC2 Instance - AZ A]
-E[EC2 Instance - AZ B]
-F[(Amazon RDS Multi-AZ)]
+D[Amazon EC2 instance - Availability Zone A]
+E[Amazon EC2 Instance - Availability Zone B]
+F[(Amazon RDS Multi-AZ Deployment)]
 
 A --> B
 B --> C
