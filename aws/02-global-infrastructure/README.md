@@ -8,7 +8,7 @@ Region: A region is a separate geographic location where AWS has data centers. E
 An Availability Zone is one more physically separated data centers located within the same AWS region.
 
 ## Edge Location
-Amazon place copied of frequently used content close to the users, these location are Edge locations.
+Amazon place copies of frequently used content close to the users, these location are Edge locations.
 It only caches the static content but dynamic contents cannot be cached.
 Static content are: Images, videos, PDFs, JavaScripts, CSS, software downloads.
 Dynamic contents: user id and password.
