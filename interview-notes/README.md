@@ -19,3 +19,13 @@ Q6. What is the difference between High Availability and Disaster Recovery?
 Q7. What is a Cache Hit?
 
 Q8. What is a Cache Miss?
+
+What is IAM?
+What is the difference between Authentication and Authorization?
+What is an IAM User?
+What is an IAM Group?
+What is an IAM Policy?
+What is an IAM Role?
+What is the Principle of Least Privilege?
+Why should the AWS Root User not be used for daily activities?
+What are temporary credentials, and why are they preferred over long-term access keys?
