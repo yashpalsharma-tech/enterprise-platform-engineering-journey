@@ -49,15 +49,15 @@ You can also create custom AMIs.
 Instance Families
 Family	Optimized For	Example
 
-T	General purpose, burstable	Small web servers, development
+T	- General purpose, burstable	Small web servers, development
 
-M	Balanced CPU and memory	Enterprise applications
+M	- Balanced CPU and memory	Enterprise applications
 
-C	Compute optimized	Batch jobs, compute-intensive apps
+C	- Compute optimized	Batch jobs, compute-intensive apps
 
-R	Memory optimized	Databases, SAP, caching
+R	- Memory optimized	Databases, SAP, caching
 
-X	High-memory workloads	Large in-memory databases
+X	- High-memory workloads	Large in-memory databases
 
 I – Storage Optimized High local storage/I/O Data-intensive workloads
 
