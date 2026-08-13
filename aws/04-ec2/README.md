@@ -29,6 +29,7 @@ AWS uses its own high-performance hypervisor technology (based on the Nitro Syst
 What is an AMI?
 
 AMI = Amazon Machine Image
+
 Think of an AMI as a template for launching an EC2 instance.
 
 It contains:
@@ -47,21 +48,34 @@ You can also create custom AMIs.
 
 Instance Families
 Family	Optimized For	Example
+
 T	General purpose, burstable	Small web servers, development
+
 M	Balanced CPU and memory	Enterprise applications
+
 C	Compute optimized	Batch jobs, compute-intensive apps
+
 R	Memory optimized	Databases, SAP, caching
+
 X	High-memory workloads	Large in-memory databases
+
 I – Storage Optimized High local storage/I/O Data-intensive workloads
+
 
 Consider the following factors while deciding the EC2 instance type.
 
 CPU utilization
+
 Memory utilization
+
 Network throughput
+
 Storage I/O
+
 Application workload
+
 Performance testing
+
 Cost
 
 Important Concept: Immutable Infrastructure
