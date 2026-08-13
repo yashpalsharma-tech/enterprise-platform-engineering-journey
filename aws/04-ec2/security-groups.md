@@ -9,6 +9,7 @@ That means if an inbound connection is allowed, the response traffic is automati
 You don't need to create a separate inbound rule for the response traffic.
 Security Groups are allow-only, If traffic doesn't match an allowed inbound rule, it is implicitly denied.
 Source can be another Security Group, not just an IP address.
+
 DB-SG
 
   ↓
