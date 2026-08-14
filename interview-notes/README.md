@@ -40,3 +40,13 @@ Q17. Why should the AWS Root User not be used for daily activities?
 
 Q18. What are temporary credentials, and why are they preferred over long-term access keys?
 
+Q19. What is an Auto Scaling Group?
+
+Q20. What is the difference between Minimum, Desired, and Maximum Capacity?
+
+Q21. What are Dynamic, Scheduled, and Predictive Scaling?
+
+Q22. What happens when an ASG reaches its maximum capacity?
+
+Q23. Which CloudWatch metrics can trigger Auto Scaling?
+
