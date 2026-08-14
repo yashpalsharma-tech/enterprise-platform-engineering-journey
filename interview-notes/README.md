@@ -46,7 +46,23 @@ Q20. What is the difference between Minimum, Desired, and Maximum Capacity?
 
 Q21. What are Dynamic, Scheduled, and Predictive Scaling?
 
-Q22. What happens when an ASG reaches its maximum capacity?
+Q22. What happens when an Auto Scaling Group (ASG) reaches its maximum capacity?
 
-Q23. Which CloudWatch metrics can trigger Auto Scaling?
+Q23. Which Amazon CloudWatch metrics can trigger Auto Scaling?
+
+Q24. What is an Auto Scaling Group (ASG)?
+
+Q25. What are the three Auto Scaling policies?
+
+Q26. What is the difference between Dynamic, Scheduled, and Predictive Scaling?
+
+Q27. How does Amazon CloudWatch work with Auto Scaling?
+
+Q28. Explain the architecture of a highly available web application on AWS.
+
+Q29. What happens if one EC2 instance becomes unhealthy?
+
+Q30. Why should an Auto Scaling Group (ASG) span multiple Availability Zones (AZs)?
+
+Q31. What is the difference between a Launch Template and an Amazon Machine Image (AMI)?
 
