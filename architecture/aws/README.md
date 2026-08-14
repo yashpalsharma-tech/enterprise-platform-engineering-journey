@@ -1,4 +1,4 @@
-## AWS Highly Available Web Application
+## AWS Highly Available Web Application 
 
 ```mermaid
 graph TD
