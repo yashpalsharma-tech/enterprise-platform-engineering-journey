@@ -48,3 +48,46 @@ Group --> Policy[EC2 Read Only Policy]
 
 Policy --> AWS[EC2 Instances]
 ```
+
+## AWS Auto Scaling Groups
+
+
+```mermaid
+flowchart TD
+
+    U[👥 Users]
+    DNS[Amazon Route 53]
+    ALB[Application Load Balancer]
+
+    subgraph AWS["AWS Region"]
+
+        subgraph VPC["Amazon VPC"]
+
+            subgraph ASG["Auto Scaling Group"]
+
+                EC1[EC2 - AZ A]
+                EC2[EC2 - AZ B]
+                EC3[EC2 - AZ A]
+
+            end
+
+        end
+
+    end
+
+    CW[Amazon CloudWatch]
+
+    U --> DNS
+    DNS --> ALB
+
+    ALB --> EC1
+    ALB --> EC2
+    ALB --> EC3
+
+    EC1 --> CW
+    EC2 --> CW
+    EC3 --> CW
+
+    CW -. Scale Out .-> ASG
+    CW -. Scale In .-> ASG
+```
