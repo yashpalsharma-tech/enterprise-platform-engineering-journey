@@ -171,3 +171,43 @@ flowchart TD
     Route53 -. "Failover" .-> ALB2
 ```
 
+**A. ALB + Target Groups**
+
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    ALB[Application Load Balancer]
+    Listener[ALB Listener]
+
+    API[API Target Group]
+    AUTH[Auth Target Group]
+    PAYMENT[Payment Target Group]
+
+    API1[EC2 API-1]
+    API2[EC2 API-2]
+
+    AUTH1[EC2 Auth-1]
+    AUTH2[EC2 Auth-2]
+
+    PAY1[EC2 Payment-1]
+    PAY2[EC2 Payment-2]
+
+    Users --> ALB
+    ALB --> Listener
+
+    Listener --> API
+    Listener --> AUTH
+    Listener --> PAYMENT
+
+    API --> API1
+    API --> API2
+
+    AUTH --> AUTH1
+    AUTH --> AUTH2
+
+    PAYMENT --> PAY1
+    PAYMENT --> PAY2
+
+```
