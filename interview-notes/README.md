@@ -66,3 +66,24 @@ Q30. Why should an Auto Scaling Group (ASG) span multiple Availability Zones (AZ
 
 Q31. What is the difference between a Launch Template and an Amazon Machine Image (AMI)?
 
+Q32. What is Elastic Load Balancer (ELB)?
+
+Q33. Why do we need a Load Balancer?
+
+Q34. What are the four types of AWS Load Balancers?
+
+Q35. What is the difference between ALB and NLB?
+
+Q36. How does an ALB determine whether an EC2 instance is healthy?
+
+Q37. Does ALB use CloudWatch for Health Checks?
+
+Q38. What happens if one EC2 instance becomes unhealthy?
+
+Q39. What happens if all EC2 instances become unhealthy?
+
+Q40. What happens if one ALB node fails?
+
+Q41. Can ALB protect against an entire AWS Region failure?
+
+Q42. How do Route 53 and ALB work together?
