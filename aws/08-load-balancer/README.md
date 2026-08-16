@@ -291,3 +291,306 @@ API Target Group      Auth Target Group
 EC2-1    EC2-2           EC2-3    EC2-4
 
 ```
+
+Each Target Group can have its own:
+
+Targets
+
+Health checks
+
+Port
+
+Scaling configuration
+
+**5. Listeners & Listener Rules**
+
+A Listener receives incoming connection requests on a configured protocol and port.
+
+Common examples:
+
+HTTP  → Port 80
+HTTPS → Port 443
+
+The listener evaluates the configured rules and determines where the request should be routed.
+
+Request flow:
+
+```text
+User
+ |
+ v
+ALB Listener
+ |
+ v
+Listener Rule
+ |
+ v
+Target Group
+ |
+ v
+Healthy Target
+
+```
+
+Listener rules can use conditions such as:
+
+URL path
+
+Hostname
+
+HTTP headers
+
+Query parameters
+
+Source IP
+
+**6. Path-Based Routing**
+
+Path-based routing routes requests based on the URL path.
+
+Example:
+/api/*       → API Target Group
+
+/login/*     → Authentication Target Group
+
+/payments/*  → Payment Target Group
+
+
+**7. Host-Based Routing**
+
+Host-based routing routes requests based on the hostname.
+
+Example:
+
+```text
+api.company.com
+        ↓
+API Target Group
+
+login.company.com
+        ↓
+Auth Target Group
+
+payments.company.com
+        ↓
+Payment Target Group
+
+```
+
+**8. Default Listener Rule**
+
+Listener rules are evaluated according to their configured priority.
+
+Example:
+
+Priority 1 → /api/*       → API Target Group
+
+Priority 2 → /login/*     → Auth Target Group
+
+Priority 3 → /payments/*  → Payment Target Group
+
+Default     → Everything else → Web Target Group
+
+If a request does not match any specific listener rule, the ALB uses the default rule.
+
+
+**9. Blue/Green Deployment**
+
+Blue/Green deployment uses two separate environments:
+
+Blue → Current production version
+
+Green → New application version
+
+Example:
+
+```text
+                    ALB
+                     |
+          +----------+----------+
+          |                     |
+     Blue Target Group     Green Target Group
+          |                     |
+      Version 1              Version 2
+
+```
+
+Benefits:
+
+Minimal or zero downtime
+
+Safer deployments
+
+Easy rollback
+
+Ability to test the new version before production traffic is switched
+
+
+**10. Sticky Sessions**
+
+Sticky Sessions, also called session affinity, allow the ALB to associate a user's requests with the same target for the configured stickiness duration.
+
+```text
+User
+ |
+ +-- Request 1 → ALB → EC2-1
+ |
+ +-- Request 2 → ALB → EC2-1
+ |
+ +-- Request 3 → ALB → EC2-1
+
+```
+
+Sticky sessions can be useful when an application stores session information locally on an EC2 instance.
+
+However, relying heavily on sticky sessions can make scaling and failover more difficult.
+
+**11. Stateless Applications**
+
+A stateless application does not depend on session information stored locally on a specific EC2 instance.
+
+Instead, shared session/state information can be stored in an external service such as:
+
+Amazon ElastiCache
+
+Database
+
+Other centralized session stores
+
+Example:
+
+```text
+
+              ALB
+               |
+        +------+------+
+        |             |
+      EC2-1         EC2-2
+        |             |
+        +------+------+
+               |
+        Shared Session Store
+
+```
+
+Benefits:
+
+Easier horizontal scaling,
+Better fault tolerance,
+Easier EC2 replacement,
+Better Auto Scaling compatibility,
+Any healthy EC2 instance can handle the request.
+
+Production preference: Prefer stateless application architecture where practical instead of depending on sticky sessions.
+
+**12. Production Scenarios**
+
+**Scenario 1: Sudden Traffic Increase**
+
+Problem:
+
+A single EC2 instance cannot handle a sudden increase in traffic.
+
+Solution:
+
+Application Load Balancer
+
+Auto Scaling Group
+
+Multiple EC2 instances
+
+CloudWatch monitoring
+
+**Scenario 2: EC2 Instance Failure**
+
+If an EC2 instance becomes unhealthy:
+
+ALB detects the unhealthy target through health checks.
+ALB stops routing user traffic to the unhealthy target.
+ASG can replace the unhealthy EC2 instance.
+New instance starts using the Launch Template/AMI.
+New instance passes the ALB health check.
+ALB starts routing traffic to the new healthy instance.
+
+**Scenario 3: Availability Zone Failure**
+
+Deploy EC2 instances across multiple Availability Zones.
+
+Example:
+
+```text
+
+          ALB
+           |
+      +----+----+
+      |         |
+     AZ-A      AZ-B
+      |         |
+    EC2-1     EC2-2
+
+```
+If AZ-A fails, ALB can route traffic to healthy targets in AZ-B.
+
+The ASG can launch replacement instances according to the configured capacity and Availability Zone distribution.
+
+**Scenario 4: Entire AWS Region Failure**
+
+An ALB cannot protect against an entire AWS Region failure because the ALB is deployed within an AWS Region.
+
+For regional disaster recovery:
+
+```text
+
+Users
+  |
+  v
+Route 53
+  |
+  +-------------------+
+  |                   |
+Singapore           Sydney
+  |                   |
+ALB                 ALB
+  |                   |
+EC2                 DR EC2
+
+```
+
+Route 53 can be configured with appropriate routing and health checks to direct new DNS queries toward the DR Region when the primary Region is unavailable.
+
+
+**Scenario 5: Blue/Green Deployment Failure**
+
+If the Green environment is deployed but starts producing errors:
+
+The ALB listener can be changed to route traffic back to the Blue Target Group.
+
+
+**13. ALB vs CloudWatch**
+**ALB**
+
+Responsible for:
+
+Traffic routing
+Listener rules
+Target groups
+Health checks
+Sending traffic to healthy targets
+
+**CloudWatch**
+
+Responsible for:
+
+Monitoring
+Metrics
+Alarms
+Scaling triggers
+
+**Auto Scaling Group**
+
+Responsible for:
+
+Maintaining desired capacity
+Launching instances
+Replacing unhealthy instances
+Scaling based on configured policies
