@@ -211,3 +211,95 @@ flowchart TD
     PAYMENT --> PAY2
 
 ```
+
+
+**B. Path-Based Routing**
+
+```mermaid
+flowchart TD
+
+    User[User]
+    ALB[Application Load Balancer]
+    Listener[ALB Listener]
+
+    API[API Target Group]
+    AUTH[Auth Target Group]
+    PAYMENT[Payment Target Group]
+
+    APIEC2[API EC2 Instances]
+    AUTHEC2[Auth EC2 Instances]
+    PAYEC2[Payment EC2 Instances]
+
+    User --> ALB
+    ALB --> Listener
+
+    Listener -->|"/api/*"| API
+    Listener -->|"/login/*"| AUTH
+    Listener -->|"/payments/*"| PAYMENT
+
+    API --> APIEC2
+    AUTH --> AUTHEC2
+    PAYMENT --> PAYEC2
+
+```
+
+
+**C. Host-Based Routing**
+
+```mermaid
+flowchart TD
+
+    User[User]
+    ALB[Application Load Balancer]
+    Listener[ALB Listener]
+
+    API[API Target Group]
+    AUTH[Auth Target Group]
+    ADMIN[Admin Target Group]
+
+    APIEC2[API EC2 Instances]
+    AUTHEC2[Auth EC2 Instances]
+    ADMINEC2[Admin EC2 Instances]
+
+    User --> ALB
+    ALB --> Listener
+
+    Listener -->|"api.company.com"| API
+    Listener -->|"login.company.com"| AUTH
+    Listener -->|"admin.company.com"| ADMIN
+
+    API --> APIEC2
+    AUTH --> AUTHEC2
+    ADMIN --> ADMINEC2
+
+```
+
+
+
+**D. Blue/Green Deployment**
+
+```mermaid
+flowchart TD
+
+    Users[Users]
+    ALB[Application Load Balancer]
+    Listener[ALB Listener]
+
+    BLUE[Blue Target Group]
+    GREEN[Green Target Group]
+
+    BLUEEC2[Blue EC2 Instances - Version 1]
+    GREENEC2[Green EC2 Instances - Version 2]
+
+    Users --> ALB
+    ALB --> Listener
+
+    Listener --> BLUE
+    Listener -. "Switch traffic" .-> GREEN
+
+    BLUE --> BLUEEC2
+    GREEN --> GREENEC2
+
+```
+
+
