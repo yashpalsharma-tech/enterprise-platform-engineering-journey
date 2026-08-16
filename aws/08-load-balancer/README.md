@@ -234,6 +234,7 @@ Application Load Balancer
    |        |        |
  EC2-1    EC2-2    EC2-3
 
+```
 
 **3. Types of AWS Load Balancers**
 
