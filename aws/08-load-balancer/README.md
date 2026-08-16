@@ -233,3 +233,30 @@ Application Load Balancer
    +--------+--------+
    |        |        |
  EC2-1    EC2-2    EC2-3
+
+
+**3. Types of AWS Load Balancers**
+
+Application Load Balancer (ALB)
+Layer 7
+HTTP/HTTPS
+Path-based routing
+Host-based routing
+Suitable for web applications and microservices
+
+Network Load Balancer (NLB)
+Layer 4
+TCP/UDP/TLS
+High performance
+Very low latency
+
+Gateway Load Balancer (GWLB)
+Used for virtual network appliances
+Firewalls
+Intrusion detection/prevention systems
+Security appliances
+
+Classic Load Balancer (CLB)
+Older generation load balancer
+Legacy service
+Not recommended for new architectures
