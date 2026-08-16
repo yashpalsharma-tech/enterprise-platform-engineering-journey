@@ -150,28 +150,24 @@ Diagram 3 – Regional DR
 ```mermaid
 flowchart TD
 
-Users --> Route53
+    Users[👥 Users]
+    Route53[Amazon Route 53]
 
-Route53 --> Singapore ALB
+    subgraph Primary["Primary Region - Singapore"]
+        ALB1[Application Load Balancer]
+        EC2A[EC2 Instances]
+        ALB1 --> EC2A
+    end
 
-Sydney ALB
+    subgraph DR["DR Region - Sydney"]
+        ALB2[Application Load Balancer]
+        EC2B[DR EC2 Instances]
+        ALB2 --> EC2B
+    end
 
-Singapore ALB --> EC2A["EC2 Instances"]
+    Users --> Route53
+    Route53 --> ALB1
 
-Sydney ALB --> EC2B["DR EC2 Instances"]
-
-Route53 -. Failover .-> Sydney ALB
-```
-
-
-
-```mermaid
-flowchart TD
-
-Singapore ALB --> EC2A["EC2 Instances"]
-
-Sydney ALB --> EC2B["DR EC2 Instances"]
-
-Route53 --> Failover --> Sydney ALB
+    Route53 -. "Failover" .-> ALB2
 ```
 
