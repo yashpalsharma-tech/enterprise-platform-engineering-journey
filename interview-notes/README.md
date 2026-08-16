@@ -87,3 +87,57 @@ Q40. What happens if one ALB node fails?
 Q41. Can ALB protect against an entire AWS Region failure?
 
 Q42. How do Route 53 and ALB work together?
+
+Q43. What is Elastic Load Balancer?
+
+Q44. Why do we need a Load Balancer?
+
+Q45. What are the four types of AWS Load Balancers?
+
+Q46. What is the difference between ALB and NLB?
+
+Q47. What is a Target Group?
+
+Q48. What is an ALB Listener?
+
+Q49. What is a Listener Rule?
+
+Q50. How does an ALB determine which Target Group should receive a request?
+
+Q51. What is Path-Based Routing?
+
+Q52. What is Host-Based Routing?
+
+Q53. What happens when an ALB request does not match any specific Listener Rule?
+
+Q54. How does an ALB perform Health Checks?
+
+Q55. Does ALB use CloudWatch to determine whether an EC2 instance is healthy?
+
+Q56. What happens when an EC2 instance becomes unhealthy?
+
+Q57. How does ALB work with an Auto Scaling Group?
+
+Q58. What happens if all EC2 instances in a Target Group become unhealthy?
+
+Q59. What is Blue/Green Deployment?
+
+Q60. How can an ALB be used for Blue/Green Deployment?
+
+Q61. How would you rollback a failed Blue/Green deployment?
+
+Q62. What are Sticky Sessions?
+
+Q63. Why can Sticky Sessions be a problem in a highly scalable application?
+
+Q64. What is a Stateless Application?
+
+Q65. Why are Stateless Applications preferred in cloud environments?
+
+Q66. How can session information be stored when using a Stateless Application?
+
+Q67. Can an ALB protect an application from an entire AWS Region failure?
+
+Q68. How can Route 53 be used together with ALB for Multi-Region Disaster Recovery?
+
+Q69. What is the difference between Path-Based Routing and Host-Based Routing?
