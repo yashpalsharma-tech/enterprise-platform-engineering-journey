@@ -40,3 +40,104 @@ Q17. Why should the AWS Root User not be used for daily activities?
 
 Q18. What are temporary credentials, and why are they preferred over long-term access keys?
 
+Q19. What is an Auto Scaling Group?
+
+Q20. What is the difference between Minimum, Desired, and Maximum Capacity?
+
+Q21. What are Dynamic, Scheduled, and Predictive Scaling?
+
+Q22. What happens when an Auto Scaling Group (ASG) reaches its maximum capacity?
+
+Q23. Which Amazon CloudWatch metrics can trigger Auto Scaling?
+
+Q24. What is an Auto Scaling Group (ASG)?
+
+Q25. What are the three Auto Scaling policies?
+
+Q26. What is the difference between Dynamic, Scheduled, and Predictive Scaling?
+
+Q27. How does Amazon CloudWatch work with Auto Scaling?
+
+Q28. Explain the architecture of a highly available web application on AWS.
+
+Q29. What happens if one EC2 instance becomes unhealthy?
+
+Q30. Why should an Auto Scaling Group (ASG) span multiple Availability Zones (AZs)?
+
+Q31. What is the difference between a Launch Template and an Amazon Machine Image (AMI)?
+
+Q32. What is Elastic Load Balancer (ELB)?
+
+Q33. Why do we need a Load Balancer?
+
+Q34. What are the four types of AWS Load Balancers?
+
+Q35. What is the difference between ALB and NLB?
+
+Q36. How does an ALB determine whether an EC2 instance is healthy?
+
+Q37. Does ALB use CloudWatch for Health Checks?
+
+Q38. What happens if one EC2 instance becomes unhealthy?
+
+Q39. What happens if all EC2 instances become unhealthy?
+
+Q40. What happens if one ALB node fails?
+
+Q41. Can ALB protect against an entire AWS Region failure?
+
+Q42. How do Route 53 and ALB work together?
+
+Q43. What is Elastic Load Balancer?
+
+Q44. Why do we need a Load Balancer?
+
+Q45. What are the four types of AWS Load Balancers?
+
+Q46. What is the difference between ALB and NLB?
+
+Q47. What is a Target Group?
+
+Q48. What is an ALB Listener?
+
+Q49. What is a Listener Rule?
+
+Q50. How does an ALB determine which Target Group should receive a request?
+
+Q51. What is Path-Based Routing?
+
+Q52. What is Host-Based Routing?
+
+Q53. What happens when an ALB request does not match any specific Listener Rule?
+
+Q54. How does an ALB perform Health Checks?
+
+Q55. Does ALB use CloudWatch to determine whether an EC2 instance is healthy?
+
+Q56. What happens when an EC2 instance becomes unhealthy?
+
+Q57. How does ALB work with an Auto Scaling Group?
+
+Q58. What happens if all EC2 instances in a Target Group become unhealthy?
+
+Q59. What is Blue/Green Deployment?
+
+Q60. How can an ALB be used for Blue/Green Deployment?
+
+Q61. How would you rollback a failed Blue/Green deployment?
+
+Q62. What are Sticky Sessions?
+
+Q63. Why can Sticky Sessions be a problem in a highly scalable application?
+
+Q64. What is a Stateless Application?
+
+Q65. Why are Stateless Applications preferred in cloud environments?
+
+Q66. How can session information be stored when using a Stateless Application?
+
+Q67. Can an ALB protect an application from an entire AWS Region failure?
+
+Q68. How can Route 53 be used together with ALB for Multi-Region Disaster Recovery?
+
+Q69. What is the difference between Path-Based Routing and Host-Based Routing?
