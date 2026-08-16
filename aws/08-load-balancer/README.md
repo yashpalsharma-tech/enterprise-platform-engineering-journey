@@ -238,7 +238,7 @@ Application Load Balancer
 
 **3. Types of AWS Load Balancers**
 
-Application Load Balancer (ALB)
+Application Load Balancer (ALB) /n
 Layer 7
 HTTP/HTTPS
 Path-based routing
