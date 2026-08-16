@@ -200,3 +200,36 @@ Use Route53 Failover Routing.
 Deploy another ALB in DR Region.
 
 Fail over traffic to DR site.
+
+
+# AWS Load Balancer
+
+## 1. What is Elastic Load Balancer?
+
+Amazon Elastic Load Balancing (ELB) is a managed AWS service that distributes incoming application traffic across multiple healthy targets such as EC2 instances.
+
+Benefits:
+
+- High Availability
+- Fault Tolerance
+- Scalability
+- Improved application performance
+- Automatic health checks
+
+---
+
+## 2. Why Do We Need a Load Balancer?
+
+A single EC2 instance can become overloaded when traffic increases.
+
+A Load Balancer distributes incoming requests across multiple healthy EC2 instances.
+
+```text
+Users
+   |
+   v
+Application Load Balancer
+   |
+   +--------+--------+
+   |        |        |
+ EC2-1    EC2-2    EC2-3
