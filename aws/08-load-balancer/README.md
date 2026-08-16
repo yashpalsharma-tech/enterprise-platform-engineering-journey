@@ -148,3 +148,55 @@ Another ALB
 ↓
 
 DR Region
+
+
+# Real Production Scenarios
+
+## Scenario 1
+
+Single EC2 server becomes overloaded during traffic spike.
+
+Solution:
+
+- Application Load Balancer
+- Auto Scaling Group
+- CloudWatch
+- Launch Template
+
+---
+
+## Scenario 2
+
+One EC2 instance becomes unhealthy.
+
+Solution:
+
+ALB stops routing traffic.
+
+ASG launches replacement EC2.
+
+---
+
+## Scenario 3
+
+One Availability Zone fails.
+
+Solution:
+
+ALB routes traffic to healthy EC2 instances in another AZ.
+
+ASG maintains desired capacity.
+
+---
+
+## Scenario 4
+
+Entire AWS Region fails.
+
+Solution:
+
+Use Route53 Failover Routing.
+
+Deploy another ALB in DR Region.
+
+Fail over traffic to DR site.
