@@ -172,6 +172,6 @@ Singapore ALB --> EC2A["EC2 Instances"]
 
 Sydney ALB --> EC2B["DR EC2 Instances"]
 
-Route53 -. Failover .-> Sydney ALB
+Route53 --> Failover --> Sydney ALB
 ```
 
