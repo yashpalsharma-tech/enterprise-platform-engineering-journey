@@ -150,15 +150,9 @@ Diagram 3 – Regional DR
 ```mermaid
 flowchart TD
 
-Users
+Users --> Route53
 
-↓
-
-Route53
-
-↓
-
-Singapore ALB
+Route53 --> Singapore ALB
 
 Sydney ALB
 
