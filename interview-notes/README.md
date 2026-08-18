@@ -141,3 +141,81 @@ Q67. Can an ALB protect an application from an entire AWS Region failure?
 Q68. How can Route 53 be used together with ALB for Multi-Region Disaster Recovery?
 
 Q69. What is the difference between Path-Based Routing and Host-Based Routing?
+
+## AWS CloudFront Interview Questions
+
+Q70. What is Amazon CloudFront?
+
+Q71. Why do we need CloudFront?
+
+Q72. What is a CDN?
+
+Q73. What is an Edge Location?
+
+Q74. What is a CloudFront Distribution?
+
+Q75. What is an Origin in CloudFront?
+
+Q76. What is a Cache Hit?
+
+Q77. What is a Cache Miss?
+
+Q78. What happens during a Cache Miss?
+
+Q79. What is TTL in CloudFront?
+
+Q80. How does TTL affect CloudFront caching?
+
+Q81. What is CloudFront Cache Invalidation?
+
+Q82. When would you use CloudFront Cache Invalidation?
+
+Q83. What type of content is suitable for CloudFront caching?
+
+Q84. Should sensitive dynamic data such as payroll information be cached?
+
+Q85. What are CloudFront Cache Behaviors?
+
+Q86. Why would you configure different Cache Behaviors for static and dynamic content?
+
+Q87. How does CloudFront work with Amazon S3?
+
+Q88. How can you prevent public access to an S3 bucket while allowing CloudFront to access it?
+
+Q89. What is Origin Access Control (OAC)?
+
+Q90. What is the difference between OAC and OAI?
+
+Q91. How does CloudFront work with an Application Load Balancer?
+
+Q92. What happens when CloudFront receives a Cache Hit?
+
+Q93. What happens when CloudFront receives a Cache Miss?
+
+Q94. Why would you put CloudFront in front of an ALB?
+
+Q95. What is the difference between CloudFront and ALB?
+
+Q96. Can CloudFront cache dynamic content?
+
+Q97. How would you configure CloudFront for a PeopleSoft application?
+
+Q98. Which PeopleSoft content would you cache using CloudFront?
+
+Q99. Why should login and payroll responses generally not be cached as shared content?
+
+Q100. What happens if an object changes at the origin before its CloudFront TTL expires?
+
+Q101. How would you immediately serve a new version of an object from CloudFront?
+
+Q102. What happens if users access the ALB directly instead of going through CloudFront?
+
+Q103. How can you design an architecture to prevent users from bypassing CloudFront?
+
+Q104. What is the difference between CloudFront Edge Locations and an AWS Region?
+
+Q105. How does CloudFront reduce network latency?
+
+Q106. How does CloudFront reduce load on the origin?
+
+Q107. Can CloudFront protect an application from an entire AWS Region failure?

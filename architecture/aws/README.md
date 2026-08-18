@@ -303,3 +303,110 @@ flowchart TD
 ```
 
 
+
+---
+
+# 2. `architecture/aws/README.md`
+
+Add this section:
+
+## CloudFront Architecture
+
+### A. CloudFront + S3
+
+```mermaid
+flowchart TD
+
+    Users[Global Users]
+
+    CF[Amazon CloudFront]
+
+    Edge1[Edge Location - Japan]
+    Edge2[Edge Location - Singapore]
+    Edge3[Edge Location - Europe]
+
+    S3[Private S3 Bucket]
+
+    Users --> CF
+
+    CF --> Edge1
+    CF --> Edge2
+    CF --> Edge3
+
+    Edge1 --> S3
+    Edge2 --> S3
+    Edge3 --> S3
+
+```
+
+
+**B. CloudFront + ALB + ASG**
+
+```mermaid
+flowchart TD
+
+    Users[Global Users]
+
+    CF[Amazon CloudFront]
+
+    ALB[Application Load Balancer]
+
+    ASG[Auto Scaling Group]
+
+    EC1[EC2 Instance 1]
+    EC2[EC2 Instance 2]
+    EC3[EC2 Instance 3]
+
+    Users --> CF
+    CF --> ALB
+    ALB --> ASG
+
+    ASG --> EC1
+    ASG --> EC2
+    ASG --> EC3
+
+```
+
+**C. CloudFront Static + Dynamic Content**
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    CF[Amazon CloudFront]
+
+    Static[Static Content<br/>Images / CSS / JS]
+    Dynamic[Dynamic Content<br/>Login / Payroll / Employee Data]
+
+    S3[S3]
+    ALB[Application Load Balancer]
+    ASG[Auto Scaling Group]
+    EC2[EC2 / PeopleSoft]
+
+    Users --> CF
+
+    CF -->|Static Cache Behavior| S3
+    CF -->|Dynamic Cache Behavior| ALB
+
+    ALB --> ASG
+    ASG --> EC2
+
+```
+
+**D. CloudFront + Private S3 + OAC**
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    CF[CloudFront]
+
+    OAC[Origin Access Control]
+
+    S3[Private S3 Bucket]
+
+    Users --> CF
+    CF --> OAC
+    OAC --> S3
+
+```
