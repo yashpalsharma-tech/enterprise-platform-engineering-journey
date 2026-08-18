@@ -216,6 +216,7 @@ flowchart TD
 **B. Path-Based Routing**
 
 ```mermaid
+
 flowchart TD
 
     User[User]
