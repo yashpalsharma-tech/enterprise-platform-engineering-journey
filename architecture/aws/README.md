@@ -566,3 +566,95 @@ flowchart TD
 
 ```
 
+
+S3 + CloudFront + OAC
+
+```mermaid
+
+flowchart TD
+
+    Users[Global Users]
+    R53[Amazon Route 53]
+    CF[Amazon CloudFront]
+    S3[Private S3 Bucket]
+
+    Users --> R53
+    R53 --> CF
+    CF -->|Authorized using OAC| S3
+```
+
+S3 Lifecycle Architecture
+
+```mermaid
+
+flowchart LR
+
+    Standard[S3 Standard<br/>0-30 Days]
+    IA[S3 Standard-IA<br/>After 30 Days]
+    Glacier[S3 Glacier<br/>After 365 Days]
+    Delete[Expire / Delete<br/>After 7 Years]
+
+    Standard -->|Lifecycle Transition| IA
+    IA -->|Lifecycle Transition| Glacier
+    Glacier -->|Lifecycle Expiration| Delete
+
+```
+
+S3 Cross-Region Replication
+
+```mermaid
+
+flowchart LR
+
+    SG[S3 Bucket<br/>Singapore Region<br/>Versioning Enabled]
+    SY[S3 Bucket<br/>Sydney Region<br/>Versioning Enabled]
+
+    SG -->|Cross-Region Replication - CRR| SY
+
+```
+
+Secure EC2 + S3 Architecture
+
+```mermaid
+
+flowchart TD
+
+    App[Application]
+    EC2[Amazon EC2]
+    Role[IAM Role<br/>Least-Privilege S3 Permissions]
+    S3[Private S3 Bucket]
+    BPA[Block Public Access]
+    KMS[SSE-KMS Encryption]
+    Versioning[S3 Versioning]
+
+    App --> EC2
+    EC2 --> Role
+    Role -->|s3:GetObject| S3
+
+    S3 --- BPA
+    S3 --- KMS
+    S3 --- Versioning
+
+```
+
+S3 Versioning
+
+```mermaid
+
+flowchart TD
+
+    Object[report.pdf]
+
+    V1[Version 1]
+    V2[Version 2]
+    V3[Version 3 - Current]
+    DM[Delete Marker]
+
+    Object --> V1
+    Object --> V2
+    Object --> V3
+    V3 -->|Normal Delete| DM
+
+```
+
+
