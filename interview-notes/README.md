@@ -219,3 +219,73 @@ Q105. How does CloudFront reduce network latency?
 Q106. How does CloudFront reduce load on the origin?
 
 Q107. Can CloudFront protect an application from an entire AWS Region failure?
+
+AWS Route 53 Interview Questions
+
+Q108. What is Amazon Route 53?
+
+Q109. What is DNS?
+
+Q110. Why do we need DNS?
+
+Q111. What is a Route 53 Hosted Zone?
+
+Q112. What is the difference between a Public and Private Hosted Zone?
+
+Q113. What is an A record?
+
+Q114. What is an AAAA record?
+
+Q115. What is a CNAME record?
+
+Q116. What is an Alias record?
+
+Q117. What is the difference between CNAME and Alias?
+
+Q118. Why would you use an Alias record for an ALB?
+
+Q119. What are the major Route 53 routing policies?
+
+Q120. What is Simple Routing?
+
+Q121. What is Weighted Routing?
+
+Q122. What is Latency-Based Routing?
+
+Q123. What is Failover Routing?
+
+Q124. What is Geolocation Routing?
+
+Q125. What is the difference between Weighted and Latency-Based Routing?
+
+Q126. What is the difference between Geolocation and Latency-Based Routing?
+
+Q127. What is a Route 53 Health Check?
+
+Q128. How does Route 53 Health Check work?
+
+Q129. How does Health Check work with Failover Routing?
+
+Q130. How would you configure Route 53 for primary and DR environments?
+
+Q131. How would you send 90% of traffic to Singapore and 10% to Sydney?
+
+Q132. How would you gradually migrate traffic from an old application to a new application?
+
+Q133. How would you route users to the AWS Region with the lowest latency?
+
+Q134. How would you route users based on their geographic location?
+
+Q135. How would you configure Route 53 with an ALB?
+
+Q136. How would you configure Route 53 with CloudFront?
+
+Q137. What happens when the primary endpoint in a Failover configuration becomes unhealthy?
+
+Q138. What is the difference between a DNS record and a Route 53 routing policy?
+
+Q139. Can Route 53 route traffic directly to an ALB?
+
+Q140. Why should you avoid using the underlying ALB IP addresses in DNS configuration?
+
+Q141. What is the difference between Active/Passive and Active/Active architectures in Route 53?
