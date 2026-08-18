@@ -289,3 +289,127 @@ Q139. Can Route 53 route traffic directly to an ALB?
 Q140. Why should you avoid using the underlying ALB IP addresses in DNS configuration?
 
 Q141. What is the difference between Active/Passive and Active/Active architectures in Route 53?
+
+**Amazon S3 Interview Questions**
+
+Q142. What is Amazon S3?
+
+Q143. What is the difference between an S3 bucket and an S3 object?
+
+Q144. Are S3 bucket names globally unique?
+
+Q145. What are the major S3 storage classes?
+
+Q146. What is S3 Standard?
+
+Q147. What is S3 Standard-IA?
+
+Q148. What is the difference between S3 Standard and S3 Standard-IA?
+
+Q149. What is S3 One Zone-IA?
+
+Q150. When would you choose One Zone-IA instead of Standard-IA?
+
+Q151. What is S3 Intelligent-Tiering?
+
+Q152. When should you use S3 Intelligent-Tiering?
+
+Q153. What is S3 Glacier Instant Retrieval?
+
+Q154. What is S3 Glacier Flexible Retrieval?
+
+Q155. What is S3 Glacier Deep Archive?
+
+Q156. What is the difference between Glacier Instant Retrieval, Flexible Retrieval, and Deep Archive?
+
+Q157. Which storage class would you use for long-term compliance records that are almost never accessed?
+
+Q158. What is an S3 Lifecycle Policy?
+
+Q159. How can Lifecycle Policies reduce S3 storage costs?
+
+Q160. What is the difference between S3 Lifecycle Policies and Intelligent-Tiering?
+
+Q161. Can Lifecycle Policies automatically delete objects?
+
+Q162. Can Lifecycle Policies manage noncurrent object versions?
+
+Q163. What is S3 Versioning?
+
+Q164. How does S3 Versioning protect against accidental overwrites?
+
+Q165. What happens when you delete an object from a version-enabled S3 bucket?
+
+Q166. What is an S3 delete marker?
+
+Q167. Can a specific version of an S3 object be permanently deleted?
+
+Q168. What is server-side encryption in S3?
+
+Q169. What is SSE-S3?
+
+Q170. What is SSE-KMS?
+
+Q171. What is SSE-C?
+
+Q172. What is the difference between SSE-S3 and SSE-KMS?
+
+Q173. When would you choose SSE-KMS instead of SSE-S3?
+
+Q174. What is the difference between encryption at rest and encryption in transit?
+
+Q175. What is S3 Block Public Access?
+
+Q176. Why should sensitive S3 buckets have Block Public Access enabled?
+
+Q177. What is an S3 Bucket Policy?
+
+Q178. What is the difference between an IAM Policy and an S3 Bucket Policy?
+
+Q179. How would an EC2 instance securely access a private S3 bucket?
+
+Q180. Why should an EC2 application use an IAM Role instead of storing AWS access keys?
+
+Q181. How would you provide another AWS account read-only access to selected S3 objects?
+
+Q182. What is S3 Cross-Region Replication?
+
+Q183. What is Same-Region Replication?
+
+Q184. What is the difference between CRR and SRR?
+
+Q185. What prerequisite is required for S3 replication regarding Versioning?
+
+Q186. What is S3 durability?
+
+Q187. What is the difference between durability and availability?
+
+Q188. What does 99.999999999% durability mean?
+
+Q189. Can Amazon S3 be used for static website content?
+
+Q190. When would you choose S3 instead of EC2 for a website?
+
+Q191. How would you design a globally distributed static website using Route 53, CloudFront, and S3?
+
+Q192. What is CloudFront Origin Access Control (OAC)?
+
+Q193. How would you keep an S3 origin private while allowing CloudFront access?
+
+Q194. What is an S3 Pre-Signed URL?
+
+Q195. When would you use a Pre-Signed URL?
+
+Q196. How would you provide temporary access to one private S3 object without making the bucket public?
+
+Q197. How would you protect highly sensitive payroll documents stored in S3?
+
+Q198. How would you automatically move S3 objects from Standard to Standard-IA and then Glacier?
+
+Q199. Which storage class would you choose when access patterns are unknown or unpredictable?
+
+Q200. Which Glacier storage class would you choose when archive data requires millisecond retrieval?
+
+Q201. Which Glacier storage class would you choose when retrieval within minutes or hours is acceptable?
+
+Q202. Which Glacier storage class would you choose for very rarely accessed long-term archives where retrieval can take hours?
