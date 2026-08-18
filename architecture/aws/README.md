@@ -410,3 +410,157 @@ flowchart TD
     OAC --> S3
 
 ```
+
+
+A. Route 53 + ALB
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    R53[Amazon Route 53]
+
+    ALB[Application Load Balancer]
+
+    TG[Target Group]
+
+    EC1[EC2 Instance 1]
+    EC2[EC2 Instance 2]
+
+    Users --> R53
+    R53 -->|Alias Record| ALB
+    ALB --> TG
+    TG --> EC1
+    TG --> EC2
+
+```
+
+B. Route 53 + CloudFront + ALB
+```mermaid
+
+flowchart TD
+
+    Users[Global Users]
+
+    R53[Amazon Route 53]
+
+    CF[Amazon CloudFront]
+
+    ALB[Application Load Balancer]
+
+    ASG[Auto Scaling Group]
+
+    EC1[EC2 Instance 1]
+    EC2[EC2 Instance 2]
+    EC3[EC2 Instance 3]
+
+    Users --> R53
+    R53 --> CF
+    CF --> ALB
+    ALB --> ASG
+
+    ASG --> EC1
+    ASG --> EC2
+    ASG --> EC3
+    ```
+
+C. Route 53 Failover Routing
+
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    R53[Route 53<br/>Failover Routing]
+
+    Health[Route 53 Health Check]
+
+    SG[Singapore Primary ALB]
+    SY[Sydney Secondary ALB]
+
+    SGEC2[Singapore EC2]
+    SYEC2[Sydney EC2]
+
+    Users --> R53
+
+    Health -. Monitors .-> SG
+
+    R53 -->|Primary Healthy| SG
+    R53 -->|Primary Unhealthy| SY
+
+    SG --> SGEC2
+    SY --> SYEC2
+
+```
+
+D. Route 53 Weighted Routing
+
+```mermaid
+flowchart TD
+
+    Users[Users]
+
+    R53[Route 53<br/>Weighted Routing]
+
+    SG[Singapore ALB]
+    SY[Sydney ALB]
+
+    SGEC2[Singapore EC2]
+    SYEC2[Sydney EC2]
+
+    Users --> R53
+
+    R53 -->|90%| SG
+    R53 -->|10%| SY
+
+    SG --> SGEC2
+    SY --> SYEC2
+```
+
+E. Route 53 Latency-Based Routing
+
+```mermaid
+
+flowchart TD
+
+    Users[Global Users]
+
+    R53[Route 53<br/>Latency-Based Routing]
+
+    SG[Singapore Region]
+    SY[Sydney Region]
+
+    SGALB[Singapore ALB]
+    SYALB[Sydney ALB]
+
+    Users --> R53
+
+    R53 -->|Lower Latency| SG
+    R53 -->|Lower Latency| SY
+
+    SG --> SGALB
+    SY --> SYALB
+```
+
+F. Route 53 Geolocation Routing
+
+```mermaid
+
+flowchart TD
+
+    Users[Global Users]
+
+    R53[Route 53<br/>Geolocation Routing]
+
+    SG[Singapore Application]
+    JP[Japan Application]
+    UK[UK Application]
+
+    Users --> R53
+
+    R53 -->|Singapore Users| SG
+    R53 -->|Japan Users| JP
+    R53 -->|UK Users| UK
+
+```
+
