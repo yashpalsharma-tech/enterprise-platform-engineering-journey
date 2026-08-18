@@ -464,7 +464,7 @@ flowchart TD
     ASG --> EC1
     ASG --> EC2
     ASG --> EC3
-    ```
+```
 
 C. Route 53 Failover Routing
 
