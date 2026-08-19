@@ -413,3 +413,105 @@ Q200. Which Glacier storage class would you choose when archive data requires mi
 Q201. Which Glacier storage class would you choose when retrieval within minutes or hours is acceptable?
 
 Q202. Which Glacier storage class would you choose for very rarely accessed long-term archives where retrieval can take hours?
+
+**Amazon RDS Interview Question**s
+
+Q203. What is Amazon RDS?
+
+Q204. What are the benefits of using Amazon RDS?
+
+Q205. What is the difference between running a database on RDS and EC2?
+
+Q206. When would you choose a database on EC2 instead of RDS?
+
+Q207. Which database engines are supported by Amazon RDS?
+
+Q208. What is an RDS DB instance?
+
+Q209. What is RDS Multi-AZ?
+
+Q210. Why do we use Multi-AZ?
+
+Q211. How does RDS Multi-AZ replication work?
+
+Q212. What happens if the primary RDS instance fails in a Multi-AZ deployment?
+
+Q213. Does the application need to change its database endpoint after Multi-AZ failover?
+
+Q214. Is the classic Multi-AZ standby used for application read traffic?
+
+Q215. What is an RDS Read Replica?
+
+Q216. Why would you use a Read Replica?
+
+Q217. What type of workload benefits from Read Replicas?
+
+Q218. What is the difference between Multi-AZ and Read Replicas?
+
+Q219. What is the difference between synchronous and asynchronous replication in the context of RDS?
+
+Q220. Can you use Multi-AZ and Read Replicas together?
+
+Q221. How would you design RDS for both high availability and read scalability?
+
+Q222. What are RDS Automated Backups?
+
+Q223. What is Point-in-Time Recovery?
+
+Q224. How does RDS Point-in-Time Recovery work?
+
+Q225. Does PITR overwrite the existing database?
+
+Q226. What is an RDS Manual Snapshot?
+
+Q227. What is the difference between Automated Backups and Manual Snapshots?
+
+Q228. When would you take a Manual Snapshot?
+
+Q229. How would you recover from an accidental database record deletion that happened 10 minutes ago?
+
+Q230. Where should a production RDS database normally be placed in a VPC?
+
+Q231. Why should RDS normally be placed in private subnets?
+
+Q232. How should application servers securely connect to RDS?
+
+Q233. How would you configure the RDS Security Group so only application servers can access it?
+
+Q234. Why should you reference the application Security Group instead of allowing 0.0.0.0/0 on the database port?
+
+Q235. How does RDS encryption at rest work?
+
+Q236. Which AWS service manages encryption keys for RDS?
+
+Q237. What happens to backups and snapshots when an RDS DB instance is encrypted?
+
+Q238. How do you protect RDS database traffic in transit?
+
+Q239. Why should applications use an RDS DNS endpoint rather than hard-coded database IP addresses?
+
+Q240. What is Amazon RDS Proxy?
+
+Q241. What problem does RDS Proxy solve?
+
+Q242. How does database connection pooling work with RDS Proxy?
+
+Q243. Why can RDS Proxy be useful with AWS Lambda?
+
+Q244. What is the difference between RDS Proxy and a Read Replica?
+
+Q245. Your RDS database has too many SELECT queries. What would you do?
+
+Q246. Your RDS database needs automatic failover if an AZ fails. What would you do?
+
+Q247. Your application is creating too many database connections. What would you do?
+
+Q248. You need to restore the database to a specific time before an accidental deletion. What would you use?
+
+Q249. You need to take a database backup immediately before a major upgrade and retain it until manually deleted. What would you use?
+
+Q250. How would you design a highly available RDS architecture across multiple Availability Zones?
+
+Q251. How would you design a production application using Route 53, ALB, Auto Scaling, EC2 and RDS?
+
+Q252. How would you combine Multi-AZ, Read Replicas, Security Groups and KMS for a business-critical application?
