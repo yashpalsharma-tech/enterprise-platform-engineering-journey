@@ -657,4 +657,104 @@ flowchart TD
 
 ```
 
+**RDS Multi-AZ**
+
+```mermaid
+flowchart TD
+
+    APP[Application]
+    ENDPOINT[RDS DNS Endpoint]
+    PRIMARY[Primary RDS<br/>AZ-A]
+    STANDBY[Standby RDS<br/>AZ-B]
+
+    APP --> ENDPOINT
+    ENDPOINT --> PRIMARY
+    PRIMARY -->|Synchronous Replication| STANDBY
+    STANDBY -. Automatic Failover .-> ENDPOINT
+```
+
+**Multi-AZ + Read Replica**
+
+```mermaid
+flowchart TD
+
+    APP[Application]
+
+    PRIMARY[Primary RDS<br/>AZ-A]
+    STANDBY[Multi-AZ Standby<br/>AZ-B]
+    REPLICA[Read Replica]
+
+    APP -->|Writes| PRIMARY
+    APP -->|Reads| REPLICA
+
+    PRIMARY -->|Synchronous Replication| STANDBY
+    PRIMARY -->|Asynchronous Replication| REPLICA
+```
+
+**Secure Application + RDS**
+
+```mermaid
+
+flowchart TD
+
+    USERS[Users]
+    R53[Amazon Route 53]
+    ALB[Internet-Facing ALB<br/>Public Subnets]
+    ASG[Auto Scaling Group]
+    EC2[EC2 Application Servers<br/>Private Subnets<br/>APP-SG]
+    ENDPOINT[RDS DNS Endpoint]
+    RDS[Amazon RDS Multi-AZ<br/>Private DB Subnets<br/>DB-SG]
+    KMS[AWS KMS]
+
+    USERS --> R53
+    R53 --> ALB
+    ALB --> ASG
+    ASG --> EC2
+    EC2 -->|DB Port<br/>APP-SG to DB-SG| ENDPOINT
+    ENDPOINT --> RDS
+    KMS -->|Encryption at Rest| RDS
+
+```
+
+**RDS Proxy**
+
+```mermaid
+flowchart TD
+
+    L1[Lambda]
+    L2[Lambda]
+    L3[Lambda]
+    L4[Lambda]
+
+    PROXY[Amazon RDS Proxy<br/>Connection Pool]
+
+    RDS[Amazon RDS]
+
+    L1 --> PROXY
+    L2 --> PROXY
+    L3 --> PROXY
+    L4 --> PROXY
+
+    PROXY -->|Reused DB Connections| RDS
+
+```
+
+**RDS Backup and PITR**
+
+```mermaid
+flowchart LR
+
+    RDS[Production RDS]
+    BACKUP[Automated Backups<br/>+ Transaction Logs]
+    PITR[Point-in-Time Recovery]
+    NEWDB[New RDS DB Instance]
+
+    RDS --> BACKUP
+    BACKUP --> PITR
+    PITR -->|Restore to Selected Time| NEWDB
+
+```
+
+
+
 
