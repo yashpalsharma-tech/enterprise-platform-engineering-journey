@@ -384,21 +384,21 @@ RDS Proxy
 
 ## RDS Exam Triggers
 ```text
-| Question clue | Answer |
-|---|---|
-| Managed relational database | RDS |
-| Full OS access | DB on EC2 |
-| AZ failure | Multi-AZ |
-| Automatic failover | Multi-AZ |
-| Read-heavy workload | Read Replica |
-| Many SELECT queries | Read Replica |
-| HA + read scaling | Multi-AZ + Read Replica |
-| Too many connections | RDS Proxy |
-| Restore to specific time | PITR |
-| Automatic backup | Automated Backups |
-| Backup until manually deleted | Manual Snapshot |
-| DB should not face internet | Private Subnets |
-| Only app servers access DB | DB-SG ← APP-SG |
-| Encryption at rest | KMS |
-| Encryption in transit | SSL/TLS |
+|        Question clue           |        Answer           |
+|--------------------------------|---------------------    |
+| Managed relational database    | RDS                     |
+| Full OS access                 | DB on EC2               |
+| AZ failure                     | Multi-AZ                |
+| Automatic failover             | Multi-AZ                |
+| Read-heavy workload            | Read Replica            |
+| Many SELECT queries            | Read Replica            |
+| HA + read scaling              | Multi-AZ + Read Replica |
+| Too many connections           | RDS Proxy               |
+| Restore to specific time       | PITR                    |
+| Automatic backup               | Automated Backups       |
+| Backup until manually deleted  | Manual Snapshot         |
+| DB should not face internet    | Private Subnets         |
+| Only app servers access DB     | DB-SG ← APP-SG          |
+| Encryption at rest             | KMS                     |
+| Encryption in transit          | SSL/TLS                 |
 ```
