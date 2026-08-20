@@ -515,3 +515,119 @@ Q250. How would you design a highly available RDS architecture across multiple A
 Q251. How would you design a production application using Route 53, ALB, Auto Scaling, EC2 and RDS?
 
 Q252. How would you combine Multi-AZ, Read Replicas, Security Groups and KMS for a business-critical application?
+
+AWS VPC Advanced Networking Interview Questions
+
+Q253. What is an Internet Gateway?
+
+Q254. What is required for an EC2 instance to communicate directly with the internet?
+
+Q255. Does assigning a public IPv4 address automatically make a subnet public?
+
+Q256. What makes a subnet a public subnet?
+
+Q257. What is a VPC Route Table?
+
+Q258. What does the local route in a VPC Route Table represent?
+
+Q259. What does 0.0.0.0/0 represent?
+
+Q260. What is the difference between routing for a public subnet and a private subnet?
+
+Q261. What is a NAT Gateway?
+
+Q262. Why do private EC2 instances use a NAT Gateway?
+
+Q263. Where should a public NAT Gateway be deployed?
+
+Q264. What is the difference between an Internet Gateway and a NAT Gateway?
+
+Q265. Can internet clients initiate connections to private EC2 instances through a NAT Gateway?
+
+Q266. Why would you deploy one NAT Gateway per Availability Zone?
+
+Q267. What happens if private subnets in multiple AZs depend on a single NAT Gateway and that NAT path becomes unavailable?
+
+Q268. What is a VPC Endpoint?
+
+Q269. Why would you use a VPC Endpoint?
+
+Q270. What is a Gateway VPC Endpoint?
+
+Q271. Which AWS services commonly use Gateway Endpoints?
+
+Q272. How would a private EC2 instance access Amazon S3 without using a NAT Gateway?
+
+Q273. What is an Interface VPC Endpoint?
+
+Q274. What is AWS PrivateLink?
+
+Q275. How do Interface Endpoints use Elastic Network Interfaces?
+
+Q276. What is the difference between a Gateway Endpoint and an Interface Endpoint?
+
+Q277. Can Security Groups be associated with Interface Endpoints?
+
+Q278. What is VPC Peering?
+
+Q279. How do two VPCs route traffic through a VPC Peering connection?
+
+Q280. Is VPC Peering transitive?
+
+Q281. If VPC-A peers with VPC-B and VPC-B peers with VPC-C, can VPC-A automatically communicate with VPC-C?
+
+Q282. What is AWS Transit Gateway?
+
+Q283. When would you use Transit Gateway instead of VPC Peering?
+
+Q284. What is a hub-and-spoke network architecture?
+
+Q285. What is the difference between VPC Peering and Transit Gateway?
+
+Q286. What is the difference between a Security Group and a Network ACL?
+
+Q287. Why is a Security Group called stateful?
+
+Q288. Why is a Network ACL called stateless?
+
+Q289. Can Security Groups contain explicit Deny rules?
+
+Q290. Can Network ACLs contain Deny rules?
+
+Q291. At what level is a Security Group applied?
+
+Q292. At what level is a Network ACL applied?
+
+Q293. How are NACL rules evaluated?
+
+Q294. What is a Bastion Host?
+
+Q295. Why would you use a Bastion Host?
+
+Q296. Where should a Bastion Host traditionally be placed?
+
+Q297. How would you restrict SSH access through a Bastion Host?
+
+Q298. What AWS service can provide administrative access to EC2 without opening inbound SSH port 22?
+
+Q299. What is longest prefix match in AWS routing?
+
+Q300. If /16, /24 and /0 routes all match a destination, which route is selected?
+
+Q301. Why would S3 traffic use a Gateway Endpoint instead of the default route to a NAT Gateway?
+
+Q302. How would you design a highly available VPC across two Availability Zones?
+
+Q303. Where would you place an internet-facing ALB in a production VPC?
+
+Q304. Where would you place application EC2 instances?
+
+Q305. Where would you place an RDS production database?
+
+Q306. How would private EC2 instances access the internet while remaining private?
+
+Q307. How would you prevent heavy S3 traffic from passing through NAT Gateways?
+
+Q308. How would you allow only the application tier to access RDS?
+
+Q309. Design a production VPC containing an ALB, Auto Scaling Group, NAT Gateways, S3 Gateway Endpoint and RDS Multi-AZ.
