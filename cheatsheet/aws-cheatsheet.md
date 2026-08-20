@@ -402,3 +402,301 @@ RDS Proxy
 | Encryption at rest             | KMS                     |
 | Encryption in transit          | SSL/TLS                 |
 ```
+
+
+
+# AWS VPC Advanced Networking Quick Reference
+
+## Internet Gateway
+
+```text
+Public Resource
+      ↓
+Internet Gateway
+      ↓
+Internet
+```
+
+Public subnet route:
+
+```text
+0.0.0.0/0 → IGW
+```
+
+---
+
+## NAT Gateway
+
+```text
+Private EC2
+     ↓
+NAT Gateway
+     ↓
+Internet Gateway
+     ↓
+Internet
+```
+
+Private subnet:
+
+```text
+0.0.0.0/0 → NAT Gateway
+```
+
+NAT Gateway:
+
+```text
+Public Subnet
++ Elastic IP
+```
+
+---
+
+## Highly Available NAT
+
+```text
+AZ-A
+Private Subnet → NAT GW-A
+
+AZ-B
+Private Subnet → NAT GW-B
+```
+
+Production:
+
+```text
+One NAT Gateway per AZ
+```
+
+---
+
+## Route Tables
+
+```text
+VPC CIDR → local
+
+Public subnet:
+0.0.0.0/0 → IGW
+
+Private subnet:
+0.0.0.0/0 → NAT Gateway
+```
+
+---
+
+## VPC Endpoint
+
+```text
+Private AWS Service Access
+         ↓
+    VPC Endpoint
+```
+
+---
+
+## Gateway Endpoint
+
+```text
+S3
+DynamoDB
+    ↓
+Gateway Endpoint
+```
+
+No NAT Gateway required for endpoint traffic.
+
+---
+
+## Interface Endpoint
+
+```text
+Many AWS Services
+       ↓
+Interface Endpoint
+       ↓
+AWS PrivateLink
+       ↓
+ENI + Private IP
+```
+
+---
+
+## VPC Peering
+
+```text
+VPC-A ←→ VPC-B
+```
+
+Private VPC-to-VPC connectivity.
+
+Important:
+
+```text
+NON-TRANSITIVE
+```
+
+---
+
+## Transit Gateway
+
+```text
+         VPC-A
+           |
+VPC-B ── TGW ── VPC-C
+           |
+         VPC-D
+```
+
+Use for:
+
+```text
+Many VPCs
++
+Central Networking Hub
+```
+
+---
+
+## Security Group
+
+```text
+Resource / ENI Level
+STATEFUL
+ALLOW only
+```
+
+---
+
+## NACL
+
+```text
+Subnet Level
+STATELESS
+ALLOW + DENY
+```
+
+---
+
+## Bastion Host
+
+```text
+Admin
+ ↓ SSH
+Bastion
+ ↓ SSH
+Private EC2
+```
+
+Modern alternative:
+
+```text
+AWS Systems Manager
+Session Manager
+```
+
+---
+
+## Longest Prefix Match
+
+```text
+/32
+ ↓
+/24
+ ↓
+/16
+ ↓
+/0
+```
+
+Most specific matching route wins.
+
+Example:
+
+```text
+10.0.0.0/16 → local
+10.0.1.0/24 → Peering
+0.0.0.0/0   → NAT
+
+Destination = 10.0.1.50
+
+Winner:
+10.0.1.0/24 → Peering
+```
+
+---
+
+## Exam Triggers
+
+|           Requirement                 |       Answer       |
+|---------------------------------------|--------------------|
+| Public subnet internet route          | Internet Gateway   |
+| Private EC2 outbound IPv4 internet    | NAT Gateway        |
+| Highly available NAT                  | NAT Gateway per AZ |
+| Private access to S3                  | Gateway Endpoint   |
+| Private access to DynamoDB            | Gateway Endpoint   |
+| Private access to many AWS services   | Interface Endpoint |
+| ENI + private endpoint IP             | Interface Endpoint |
+| PrivateLink                           | Interface Endpoint |
+| Connect two VPCs                      | VPC Peering        |
+| Many VPCs centrally                   | Transit Gateway    |
+| Stateful firewall                     | Security Group     |
+| Stateless subnet control              | NACL               |
+| Explicit network Deny                 | NACL               |
+| Traditional private EC2 SSH access    | Bastion Host       |
+| No inbound SSH administration         | SSM Session Manager|
+| Multiple matching routes              | Longest Prefix Match|
+| Most specific route                   | Highest matching prefix length |
+
+---
+
+## Production VPC
+
+```text
+                    Internet
+                       ↓
+                Internet Gateway
+                       ↓
+             Internet-Facing ALB
+                 Public Subnets
+                  /           \
+               AZ-A           AZ-B
+                ↓              ↓
+          Private EC2     Private EC2
+              ASG             ASG
+                ↓              ↓
+             APP-SG          APP-SG
+                  \           /
+                   \         /
+                    ↓       ↓
+                  RDS Multi-AZ
+                  Private DB
+                     DB-SG
+```
+
+Outbound internet:
+
+```text
+Private EC2-A → NAT GW-A → IGW
+
+Private EC2-B → NAT GW-B → IGW
+```
+
+S3:
+
+```text
+Private EC2
+     ↓
+S3 Gateway Endpoint
+     ↓
+Amazon S3
+```
+
+Database:
+
+```text
+APP-SG
+   ↓
+DB Port
+   ↓
+DB-SG
+```
