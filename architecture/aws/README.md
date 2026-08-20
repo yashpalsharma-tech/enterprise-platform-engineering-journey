@@ -865,7 +865,6 @@ flowchart LR
 Transit Gateway
 
 ```mermaid
-
 flowchart TD
 
     TGW[AWS Transit Gateway]
@@ -881,7 +880,6 @@ flowchart TD
     C --> TGW
     D --> TGW
     E --> TGW
-
 ```
 
 Production Multi-AZ VPC
