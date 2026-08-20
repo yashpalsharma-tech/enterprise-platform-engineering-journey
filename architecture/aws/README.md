@@ -755,6 +755,181 @@ flowchart LR
 
 ```
 
+Public and Private Subnets + NAT
+
+```mermaid
+
+flowchart TD
+
+    Internet[Internet]
+    IGW[Internet Gateway]
+
+    Public[Public Subnet]
+    NAT[NAT Gateway]
+
+    Private[Private App Subnet]
+    EC2[EC2 Application]
+
+    Internet <--> IGW
+    IGW <--> Public
+    Public --> NAT
+    Private --> EC2
+    EC2 --> NAT
+
+```
+
+Multi-AZ NAT Architecture
+
+```mermaid
+
+flowchart TD
+
+    Internet[Internet]
+    IGW[Internet Gateway]
+
+    PubA[Public Subnet A - AZ-A]
+    PubB[Public Subnet B - AZ-B]
+
+    NATA[NAT Gateway A]
+    NATB[NAT Gateway B]
+
+    PrivA[Private App Subnet A]
+    PrivB[Private App Subnet B]
+
+    EC2A[EC2-A]
+    EC2B[EC2-B]
+
+    Internet <--> IGW
+
+    IGW --> PubA
+    IGW --> PubB
+
+    PubA --> NATA
+    PubB --> NATB
+
+    PrivA --> EC2A
+    PrivB --> EC2B
+
+    EC2A --> NATA
+    EC2B --> NATB
+
+```
+
+S3 Gateway Endpoint
+
+```mermaid
+
+flowchart LR
+
+    EC2[EC2 - Private Subnet]
+    Endpoint[S3 Gateway VPC Endpoint]
+    S3[Amazon S3]
+
+    EC2 --> Endpoint
+    Endpoint --> S3
+
+```
+
+Interface Endpoint
+
+```mermaid
+
+flowchart LR
+
+    EC2[EC2 - Private Subnet]
+    Endpoint[Interface VPC Endpoint<br/>ENI + Private IP]
+    PL[AWS PrivateLink]
+    Service[AWS Service]
+
+    EC2 --> Endpoint
+    Endpoint --> PL
+    PL --> Service
+
+```
+
+VPC Peering
+
+```mermaid
+
+flowchart LR
+
+    VPCA[VPC-A<br/>10.0.0.0/16]
+    Peer[VPC Peering Connection]
+    VPCB[VPC-B<br/>10.1.0.0/16]
+
+    VPCA <--> Peer
+    Peer <--> VPCB
+
+```
+
+Transit Gateway
+
+```mermaid
+
+flowchart TD
+
+    TGW[AWS Transit Gateway]
+
+    A[VPC-A]
+    B[VPC-B]
+    C[VPC-C]
+    D[VPC-D]
+    E[VPC-E]
+
+    A --> TGW
+    B --> TGW
+    C --> TGW
+    D --> TGW
+    E --> TGW
+
+```
+
+Production Multi-AZ VPC
+
+```mermaid
+
+flowchart TD
+
+    Users[Internet Users]
+    IGW[Internet Gateway]
+    ALB[Application Load Balancer]
+
+    PubA[Public Subnet A - AZ-A]
+    PubB[Public Subnet B - AZ-B]
+
+    NATA[NAT Gateway A]
+    NATB[NAT Gateway B]
+
+    AppA[EC2 App - AZ-A<br/>APP-SG]
+    AppB[EC2 App - AZ-B<br/>APP-SG]
+
+    S3EP[S3 Gateway Endpoint]
+    S3[Amazon S3]
+
+    RDS[RDS Multi-AZ<br/>Private DB Subnets<br/>DB-SG]
+
+    Users --> IGW
+    IGW --> ALB
+
+    ALB --> AppA
+    ALB --> AppB
+
+    AppA --> NATA
+    AppB --> NATB
+
+    NATA --> PubA
+    NATB --> PubB
+
+    AppA --> S3EP
+    AppB --> S3EP
+    S3EP --> S3
+
+    AppA -->|DB Port| RDS
+    AppB -->|DB Port| RDS
+
+```
+
+
 
 
 
