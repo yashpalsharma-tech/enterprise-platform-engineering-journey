@@ -631,3 +631,111 @@ Q307. How would you prevent heavy S3 traffic from passing through NAT Gateways?
 Q308. How would you allow only the application tier to access RDS?
 
 Q309. Design a production VPC containing an ALB, Auto Scaling Group, NAT Gateways, S3 Gateway Endpoint and RDS Multi-AZ.
+
+## AWS CloudWatch, CloudTrail and SNS Interview Questions
+
+Q310. What is Amazon CloudWatch?
+
+Q311. What are CloudWatch Metrics?
+
+Q312. Which EC2 metrics are available through standard CloudWatch monitoring?
+
+Q313. Is EC2 memory utilization available as a standard EC2 CloudWatch metric?
+
+Q314. How would you monitor memory utilization on an EC2 instance?
+
+Q315. What is the CloudWatch Agent?
+
+Q316. What types of metrics can the CloudWatch Agent collect?
+
+Q317. How would you collect application logs from an EC2 instance?
+
+Q318. What is CloudWatch Logs?
+
+Q319. What is a CloudWatch Log Group?
+
+Q320. What is a CloudWatch Log Stream?
+
+Q321. What is a CloudWatch Alarm?
+
+Q322. What are the three CloudWatch Alarm states?
+
+Q323. What does the ALARM state mean?
+
+Q324. What does INSUFFICIENT_DATA mean?
+
+Q325. How would you create an alert when EC2 CPU exceeds 80%?
+
+Q326. What is Amazon SNS?
+
+Q327. How do CloudWatch Alarms and SNS work together?
+
+Q328. What is an SNS Topic?
+
+Q329. Which types of subscribers can receive SNS messages?
+
+Q330. How would you send an email notification when a CloudWatch Alarm enters the ALARM state?
+
+Q331. What is a CloudWatch Dashboard?
+
+Q332. Why would an operations team use CloudWatch Dashboards?
+
+Q333. How would you monitor multiple EC2, ALB and RDS resources from one screen?
+
+Q334. Which CloudWatch metrics can help troubleshoot ALB 5xx errors?
+
+Q335. What is the difference between HTTPCode_ELB_5XX_Count and HTTPCode_Target_5XX_Count?
+
+Q336. If HTTPCode_ELB_5XX_Count is zero but HTTPCode_Target_5XX_Count is high, where would you investigate first?
+
+Q337. Which RDS metrics can be monitored through CloudWatch?
+
+Q338. How would you monitor RDS DatabaseConnections?
+
+Q339. Does RDS require a CloudWatch Agent to publish standard RDS metrics?
+
+Q340. What is AWS CloudTrail?
+
+Q341. What type of activity does CloudTrail record?
+
+Q342. How would you determine who terminated an EC2 instance?
+
+Q343. How would you determine who modified a Security Group?
+
+Q344. What is the difference between CloudWatch and CloudTrail?
+
+Q345. Which service would you use to investigate AWS API activity?
+
+Q346. Which service would you use to investigate high EC2 CPU utilization?
+
+Q347. What is a CloudWatch Logs Metric Filter?
+
+Q348. How would you count ERROR occurrences in application logs?
+
+Q349. How would you create an alarm based on ERROR occurrences in CloudWatch Logs?
+
+Q350. Explain the flow from CloudWatch Logs to an SNS notification using a Metric Filter.
+
+Q351. How would you Auto Scale EC2 instances based on memory utilization?
+
+Q352. Why is the CloudWatch Agent required for memory-based EC2 scaling?
+
+Q353. How do CloudWatch Metrics, Alarms and SNS work together?
+
+Q354. How would you design monitoring for an EC2 application behind an ALB?
+
+Q355. How would you monitor EC2 CPU, memory and application logs?
+
+Q356. How would you monitor ALB response errors?
+
+Q357. How would you monitor RDS CPU, connections and storage?
+
+Q358. How would you design centralized monitoring for EC2, ALB and RDS?
+
+Q359. How would you combine CloudWatch and CloudTrail for production monitoring and auditing?
+
+Q360. Design an alerting solution where application ERROR events trigger an operations email.
+
+Q361. Your EC2 CPU reaches 95%, application logs show database errors and someone changes the Security Group. Which AWS services would you use to investigate each issue?
+
+Q362. Explain a complete production monitoring architecture using CloudWatch Metrics, CloudWatch Agent, CloudWatch Logs, CloudWatch Alarms, SNS, Dashboards and CloudTrail.
