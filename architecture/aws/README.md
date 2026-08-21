@@ -926,8 +926,36 @@ flowchart TD
     AppB -->|DB Port| RDS
 
 ```
+**CloudWatch Monitoring Architecture**
+```mermaid
 
+flowchart TD
 
+    EC2[EC2]
+    ALB[Application Load Balancer]
+    RDS[Amazon RDS]
+
+    Agent[CloudWatch Agent]
+    Metrics[CloudWatch Metrics]
+    Logs[CloudWatch Logs]
+
+    Alarm[CloudWatch Alarm]
+    SNS[Amazon SNS]
+    OPS[Operations Team]
+
+    EC2 -->|CPU / Network| Metrics
+    EC2 --> Agent
+
+    Agent -->|Memory / OS Metrics| Metrics
+    Agent -->|Application Logs| Logs
+
+    ALB -->|ALB Metrics| Metrics
+    RDS -->|RDS Metrics| Metrics
+
+    Metrics --> Alarm
+    Alarm --> SNS
+    SNS --> OPS
+```
 
 
 
