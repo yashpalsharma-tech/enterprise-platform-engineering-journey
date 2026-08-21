@@ -958,4 +958,87 @@ flowchart TD
 ```
 
 
+**CloudWatch Logs Metric Filter**
+```mermaid
+flowchart LR
+
+    APP[Application]
+    AGENT[CloudWatch Agent]
+    LOGS[CloudWatch Logs]
+    FILTER[Metric Filter<br/>Pattern: ERROR]
+    METRIC[CloudWatch Metric<br/>ErrorCount]
+    ALARM[CloudWatch Alarm]
+    SNS[Amazon SNS]
+    OPS[Operations Team]
+
+    APP --> AGENT
+    AGENT --> LOGS
+    LOGS --> FILTER
+    FILTER --> METRIC
+    METRIC --> ALARM
+    ALARM --> SNS
+    SNS --> OPS
+```
+
+
+**CloudWatch vs CloudTrail**
+
+```mermaid
+
+flowchart TD
+
+    RESOURCE[AWS Resources]
+    ACTIVITY[AWS API Activity]
+
+    CW[Amazon CloudWatch]
+    CT[AWS CloudTrail]
+
+    RESOURCE -->|Metrics / Logs| CW
+    ACTIVITY -->|API Activity| CT
+
+    CW --> HEALTH[Performance / Health]
+    CT --> AUDIT[Who / What / When]
+```
+
+**Production Observability**
+
+```mermaid
+flowchart TD
+
+    ALB[ALB]
+    EC2[EC2 Auto Scaling Group]
+    RDS[RDS]
+
+    AGENT[CloudWatch Agent]
+
+    CW[CloudWatch Metrics]
+    LOGS[CloudWatch Logs]
+
+    ALARM[CloudWatch Alarm]
+    SNS[Amazon SNS]
+    OPS[Operations Team]
+
+    DASH[CloudWatch Dashboard]
+    TRAIL[AWS CloudTrail]
+
+    ALB --> CW
+
+    EC2 -->|CPU / Network| CW
+    EC2 --> AGENT
+    AGENT -->|Memory| CW
+    AGENT -->|Application Logs| LOGS
+
+    RDS --> CW
+
+    CW --> ALARM
+    ALARM --> SNS
+    SNS --> OPS
+
+    CW --> DASH
+
+    TRAIL -->|Audit AWS API Activity| AUDIT[Audit Records]
+
+```
+
+
 
