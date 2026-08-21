@@ -1042,3 +1042,170 @@ flowchart TD
 
 
 
+**Basic SQS Architecture**
+
+```mermaid
+
+flowchart LR
+
+    Producer[Producer / Application]
+    Queue[Amazon SQS Queue]
+    Consumer[Consumer / Worker]
+
+    Producer -->|Send Message| Queue
+    Queue -->|Receive Message| Consumer
+
+```
+
+
+**Visibility Timeout**
+```mermaid
+flowchart TD
+
+    Queue[SQS Queue]
+    WorkerA[Worker-A]
+    Invisible[Message Invisible<br/>Visibility Timeout]
+    WorkerB[Worker-B]
+
+    Queue -->|Receive Message| WorkerA
+    WorkerA --> Invisible
+    Invisible -->|Processing Success| Delete[Delete Message]
+    Invisible -->|Worker Fails / Timeout Expires| Queue
+    Queue --> WorkerB
+```
+
+
+**Dead-Letter Queue**
+```mermaid
+flowchart LR
+
+    Main[Main SQS Queue]
+    Consumer[Consumer]
+    DLQ[Dead-Letter Queue]
+
+    Main --> Consumer
+    Consumer -->|Processing Failed| Main
+    Main -->|maxReceiveCount reached| DLQ
+```
+
+
+**SQS + Auto Scaling**
+
+```mermaid
+
+flowchart TD
+
+    App[Application]
+    Queue[Amazon SQS]
+    CW[CloudWatch Queue Metric]
+    ASG[EC2 Auto Scaling Group]
+    Worker1[Worker EC2-1]
+    Worker2[Worker EC2-2]
+    Worker3[Worker EC2-3]
+
+    App --> Queue
+    Queue --> CW
+    CW -->|Scale based on backlog| ASG
+
+    ASG --> Worker1
+    ASG --> Worker2
+    ASG --> Worker3
+
+    Queue --> Worker1
+    Queue --> Worker2
+    Queue --> Worker3
+
+```
+
+
+**SNS Fan-Out**
+
+```mermaid
+flowchart TD
+
+    App[Order Application]
+    SNS[Amazon SNS Topic]
+
+    PayQ[Payment SQS Queue]
+    InvQ[Inventory SQS Queue]
+    AnaQ[Analytics SQS Queue]
+
+    Pay[Payment Service]
+    Inv[Inventory Service]
+    Ana[Analytics Service]
+
+    App --> SNS
+
+    SNS --> PayQ
+    SNS --> InvQ
+    SNS --> AnaQ
+
+    PayQ --> Pay
+    InvQ --> Inv
+    AnaQ --> Ana
+
+```
+
+**SNS + SQS + DLQs**
+
+```mermaid
+
+flowchart TD
+
+    App[Order Application]
+    SNS[Amazon SNS Topic]
+
+    PayQ[Payment Queue]
+    InvQ[Inventory Queue]
+    AnaQ[Analytics Queue]
+
+    Pay[Payment Service]
+    Inv[Inventory Service]
+    Ana[Analytics Service]
+
+    PayDLQ[Payment DLQ]
+    InvDLQ[Inventory DLQ]
+    AnaDLQ[Analytics DLQ]
+
+    App --> SNS
+
+    SNS --> PayQ
+    SNS --> InvQ
+    SNS --> AnaQ
+
+    PayQ --> Pay
+    InvQ --> Inv
+    AnaQ --> Ana
+
+    PayQ -. Repeated Failures .-> PayDLQ
+    InvQ -. Repeated Failures .-> InvDLQ
+    AnaQ -. Repeated Failures .-> AnaDLQ
+
+```
+
+
+**FIFO Message Groups**
+
+```mermaid
+
+flowchart TD
+
+    FIFO[SQS FIFO Queue]
+
+    A1[Account-A Transaction 1]
+    A2[Account-A Transaction 2]
+    A3[Account-A Transaction 3]
+
+    B1[Account-B Transaction 1]
+    B2[Account-B Transaction 2]
+    B3[Account-B Transaction 3]
+
+    FIFO --> A1 --> A2 --> A3
+    FIFO --> B1 --> B2 --> B3
+
+```
+
+
+
+
+
