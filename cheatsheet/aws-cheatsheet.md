@@ -863,23 +863,23 @@ CloudWatch Metrics
 
 ## Exam Triggers
 
-| Requirement | Answer |
-|---|---|
-| EC2 CPU | CloudWatch Metric |
-| EC2 memory | CloudWatch Agent |
-| EC2 disk-space utilization | CloudWatch Agent |
-| EC2 application logs | Agent + CloudWatch Logs |
-| Search ERROR logs | CloudWatch Logs |
-| Count ERROR logs | Metric Filter |
-| Threshold monitoring | CloudWatch Alarm |
-| Email operations | SNS |
-| Central monitoring screen | CloudWatch Dashboard |
-| ALB 5xx monitoring | CloudWatch Metrics |
-| RDS connections | CloudWatch Metrics |
-| Who terminated EC2? | CloudTrail |
-| Who changed Security Group? | CloudTrail |
-| AWS API audit | CloudTrail |
-| Memory-based Auto Scaling | Agent → Metric → Auto Scaling |
+| Requirement                    | Answer                                |
+|--------------------------------|---------------------------------------|
+| EC2 CPU                        | CloudWatch Metric                     |
+| EC2 memory                     | CloudWatch Agent                      |
+| EC2 disk-space utilization     | CloudWatch Agent                      |
+| EC2 application logs           | Agent + CloudWatch Logs               |
+| Search ERROR logs              | CloudWatch Logs                       |
+| Count ERROR logs               | Metric Filter                         |
+| Threshold monitoring           | CloudWatch Alarm                      |
+| Email operations               | SNS                                   |
+| Central monitoring screen      | CloudWatch Dashboard                  |
+| ALB 5xx monitoring             | CloudWatch Metrics                    |
+| RDS connections                | CloudWatch Metrics                    |
+| Who terminated EC2?            | CloudTrail                            |
+| Who changed Security Group?    | CloudTrail                            |
+| AWS API audit                  | CloudTrail                            |
+| Memory-based Auto Scaling      | Agent → Metric → Auto Scaling         |
 ```
 
 ### Memory shortcut
@@ -896,4 +896,238 @@ SNS = NOTIFY
 Dashboard = VISUALIZE
 
 CloudTrail = AUDIT
+```
+
+
+
+# Amazon SQS + SNS Quick Reference
+
+## SQS
+
+```text
+Producer
+   ↓
+SQS Queue
+   ↓
+Consumer
+```
+
+Think:
+
+```text
+Queue
+Buffer
+Decouple
+Async
+```
+
+---
+
+## Visibility Timeout
+
+```text
+Consumer receives message
+        ↓
+Message becomes invisible
+        ↓
+Processing
+        ↓
+Delete on success
+```
+
+Failure:
+
+```text
+Consumer crashes
+        ↓
+Visibility Timeout expires
+        ↓
+Message visible again
+```
+
+---
+
+## Retention Period
+
+```text
+How long SQS keeps
+an undeleted message
+```
+
+---
+
+## Long Polling
+
+```text
+Wait for message
+instead of repeated
+empty responses
+```
+
+---
+
+## DLQ
+
+```text
+Repeated Processing Failure
+          ↓
+maxReceiveCount
+          ↓
+Dead-Letter Queue
+```
+
+---
+
+## Standard Queue
+
+```text
+At-least-once delivery
+
+Best-effort ordering
+
+Duplicate possible
+
+Very high throughput
+```
+
+---
+
+## FIFO Queue
+
+```text
+First-In-First-Out
+
+Ordering within MessageGroupId
+
+Deduplication capabilities
+```
+
+Use when:
+
+```text
+Strict ordering required
+```
+
+---
+
+## Idempotency
+
+```text
+Same message processed twice
+       ↓
+No incorrect duplicate effect
+```
+
+Especially important with Standard Queues.
+
+---
+
+## SQS + Auto Scaling
+
+```text
+SQS Backlog
+     ↓
+CloudWatch Metric
+     ↓
+Auto Scaling
+     ↓
+More/Fewer Workers
+```
+
+Important metric:
+
+```text
+ApproximateNumberOfMessagesVisible
+```
+
+---
+
+## SNS
+
+```text
+Publisher
+   ↓
+SNS Topic
+   ↓
+Multiple Subscribers
+```
+
+Think:
+
+```text
+Pub/Sub
+Fan-Out
+```
+
+---
+
+## SNS vs SQS
+
+```text
+SQS
+→ Queue
+→ Buffer
+→ One work stream
+
+SNS
+→ Publish/Subscribe
+→ One message to many subscribers
+```
+
+---
+
+## SNS + SQS
+
+```text
+              SNS Topic
+          ┌──────┼──────┐
+          ↓      ↓      ↓
+        SQS     SQS     SQS
+          ↓      ↓      ↓
+       Service Service Service
+```
+
+Use when:
+
+```text
+One Event
++
+Multiple Independent Consumers
++
+Reliable Buffering
+```
+
+---
+
+## SQS Timer Cheat Sheet
+
+| Feature            | Purpose                  |
+|--------------------|--------------------------|
+| Visibility Timeout | Hide received message    |
+| Retention Period   | Store undeleted message  |
+| Long Polling       | Wait for message         |
+| maxReceiveCount    | Receives before DLQ      |
+
+---
+
+## Exam Triggers
+
+| Requirement                          | Answer                    |
+|--------------------------------------|---------------------------|
+| Decouple services                    | SQS                       |
+| Buffer traffic spike                 | SQS                       |
+| Async processing                     | SQS                       |
+| Consumer temporarily unavailable     | SQS retains messages      |
+| Hide message while processing        | Visibility Timeout        |
+| Reduce empty receives                | Long Polling              |
+| Repeatedly failing messages          | DLQ                       |
+| Retry count before DLQ               | maxReceiveCount           |
+| High throughput, ordering not strict | Standard                  |
+| Strict message ordering              | FIFO                      |
+| Same-account transaction ordering    | FIFO + MessageGroupId     |
+| Duplicate-safe processing            | Idempotent Consumer       |
+| Scale workers from queue depth       | SQS Metric + ASG          |
+| One message to many subscribers      | SNS                       |
+| Reliable fan-out                     | SNS + separate SQS queues |
+| Independent failure isolation        | SNS + SQS + DLQ           |
 ```
