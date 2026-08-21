@@ -1,4 +1,4 @@
-﻿# Docum# Amazon SQS, SNS and Event-Driven Architecture
+﻿# Amazon SQS, SNS and Event-Driven Architecture
 
 This module covers:
 
