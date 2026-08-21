@@ -739,3 +739,127 @@ Q360. Design an alerting solution where application ERROR events trigger an oper
 Q361. Your EC2 CPU reaches 95%, application logs show database errors and someone changes the Security Group. Which AWS services would you use to investigate each issue?
 
 Q362. Explain a complete production monitoring architecture using CloudWatch Metrics, CloudWatch Agent, CloudWatch Logs, CloudWatch Alarms, SNS, Dashboards and CloudTrail.
+
+## Amazon SQS, SNS and Event-Driven Architecture Interview Questions
+
+Q363. What is Amazon SQS?
+
+Q364. Why do we use SQS?
+
+Q365. What does decoupling mean in an SQS architecture?
+
+Q366. What is a Producer in SQS?
+
+Q367. What is a Consumer in SQS?
+
+Q368. How does SQS help handle sudden traffic spikes?
+
+Q369. What happens to messages if an SQS consumer becomes unavailable?
+
+Q370. What is SQS Visibility Timeout?
+
+Q371. Why does SQS make a received message temporarily invisible?
+
+Q372. What happens when the Visibility Timeout expires before the message is deleted?
+
+Q373. What happens if a consumer crashes while processing an SQS message?
+
+Q374. Why should the Visibility Timeout normally be longer than the expected processing time?
+
+Q375. What can happen if processing takes four minutes but Visibility Timeout is one minute?
+
+Q376. Does receiving an SQS message automatically delete it?
+
+Q377. When should a consumer delete an SQS message?
+
+Q378. What is an idempotent consumer?
+
+Q379. Why is idempotency important with SQS Standard Queues?
+
+Q380. What is the SQS Message Retention Period?
+
+Q381. What is the difference between Message Retention and Visibility Timeout?
+
+Q382. What is SQS Long Polling?
+
+Q383. Why would you enable Long Polling?
+
+Q384. How does Long Polling reduce empty SQS responses?
+
+Q385. What is an SQS Dead-Letter Queue?
+
+Q386. Why would you use a Dead-Letter Queue?
+
+Q387. What is a redrive policy?
+
+Q388. What does maxReceiveCount control?
+
+Q389. What happens when a message reaches maxReceiveCount?
+
+Q390. Does a Dead-Letter Queue automatically fix failed messages?
+
+Q391. What is an SQS Standard Queue?
+
+Q392. What delivery behavior does a Standard Queue provide?
+
+Q393. Can Standard Queues deliver duplicate messages?
+
+Q394. What ordering guarantee does an SQS Standard Queue provide?
+
+Q395. What is an SQS FIFO Queue?
+
+Q396. When would you choose FIFO instead of Standard?
+
+Q397. What is MessageGroupId in an SQS FIFO Queue?
+
+Q398. How does MessageGroupId allow different groups to process independently?
+
+Q399. What is the difference between SQS Standard and FIFO Queues?
+
+Q400. How would you process banking transactions in strict order for each bank account?
+
+Q401. How would you scale EC2 workers based on an SQS backlog?
+
+Q402. Which SQS CloudWatch metric can indicate the approximate queue backlog?
+
+Q403. What is ApproximateNumberOfMessagesVisible?
+
+Q404. How can SQS, CloudWatch and Auto Scaling work together?
+
+Q405. What is Amazon SNS?
+
+Q406. What is the publish/subscribe model?
+
+Q407. What is an SNS Topic?
+
+Q408. Which types of subscribers can subscribe to SNS?
+
+Q409. What is the difference between SNS and SQS?
+
+Q410. When would you use SNS instead of SQS?
+
+Q411. What is SNS fan-out?
+
+Q412. How would you send one OrderCreated event to Payment, Inventory and Analytics?
+
+Q413. Why would you use separate SQS queues behind an SNS Topic?
+
+Q414. What happens if one subscriber service is temporarily unavailable in an SNS + SQS architecture?
+
+Q415. Why is one shared SQS queue not appropriate when every service needs a copy of every event?
+
+Q416. How does SNS + SQS provide both fan-out and decoupling?
+
+Q417. Can each SQS queue in an SNS fan-out architecture have its own DLQ?
+
+Q418. How would you design an e-commerce event architecture for Payment, Inventory and Analytics?
+
+Q419. Explain the difference between Visibility Timeout, Message Retention, Long Polling and maxReceiveCount.
+
+Q420. Design an SQS architecture that handles consumer failures without losing waiting messages.
+
+Q421. Design an architecture where repeatedly failing messages are isolated for troubleshooting.
+
+Q422. Design an Auto Scaling architecture where EC2 workers scale according to SQS queue depth.
+
+Q423. Design a reliable event-driven architecture using SNS, SQS and DLQs for multiple independent services.
