@@ -700,3 +700,200 @@ DB Port
    ↓
 DB-SG
 ```
+
+
+
+# CloudWatch + CloudTrail + SNS Quick Reference
+
+## CloudWatch
+
+```text
+AWS Resource
+     ↓
+CloudWatch
+     ↓
+Metrics / Logs / Alarms / Dashboards
+```
+
+Think:
+
+```text
+CloudWatch
+    ↓
+WHAT is happening?
+```
+
+---
+
+## CloudTrail
+
+```text
+AWS API Activity
+      ↓
+CloudTrail
+      ↓
+Who + What + When
+```
+
+Think:
+
+```text
+CloudTrail
+    ↓
+WHO did WHAT?
+```
+
+---
+
+## SNS
+
+```text
+CloudWatch Alarm
+       ↓
+SNS Topic
+       ↓
+Operations Team
+```
+
+Think:
+
+```text
+SNS
+ ↓
+Notify
+```
+
+---
+
+## EC2 Monitoring
+
+```text
+CPU
+ ↓
+Standard CloudWatch Metric
+
+Memory
+ ↓
+CloudWatch Agent
+ ↓
+CloudWatch Metric
+
+Disk Space
+ ↓
+CloudWatch Agent
+ ↓
+CloudWatch Metric
+
+Application Logs
+ ↓
+CloudWatch Agent
+ ↓
+CloudWatch Logs
+```
+
+---
+
+## Alarm Flow
+
+```text
+Resource
+   ↓
+Metric
+   ↓
+CloudWatch
+   ↓
+Alarm
+   ↓
+SNS
+   ↓
+Operations
+```
+
+---
+
+## Application ERROR Alert
+
+```text
+Application
+     ↓
+CloudWatch Logs
+     ↓
+Metric Filter
+"ERROR"
+     ↓
+CloudWatch Metric
+     ↓
+CloudWatch Alarm
+     ↓
+SNS
+     ↓
+Email
+```
+
+---
+
+## ALB 5xx
+
+```text
+HTTPCode_ELB_5XX_Count
+        ↓
+ALB generated error
+
+HTTPCode_Target_5XX_Count
+        ↓
+Backend target generated error
+```
+
+---
+
+## RDS
+
+```text
+CPUUtilization
+DatabaseConnections
+FreeStorageSpace
+ReadIOPS
+WriteIOPS
+Latency
+      ↓
+CloudWatch Metrics
+```
+
+---
+
+## Exam Triggers
+
+| Requirement | Answer |
+|---|---|
+| EC2 CPU | CloudWatch Metric |
+| EC2 memory | CloudWatch Agent |
+| EC2 disk-space utilization | CloudWatch Agent |
+| EC2 application logs | Agent + CloudWatch Logs |
+| Search ERROR logs | CloudWatch Logs |
+| Count ERROR logs | Metric Filter |
+| Threshold monitoring | CloudWatch Alarm |
+| Email operations | SNS |
+| Central monitoring screen | CloudWatch Dashboard |
+| ALB 5xx monitoring | CloudWatch Metrics |
+| RDS connections | CloudWatch Metrics |
+| Who terminated EC2? | CloudTrail |
+| Who changed Security Group? | CloudTrail |
+| AWS API audit | CloudTrail |
+| Memory-based Auto Scaling | Agent → Metric → Auto Scaling |
+```
+
+### Memory shortcut
+
+```text
+Metrics = NUMBERS
+
+Logs = EVENTS / TEXT
+
+Alarm = THRESHOLD
+
+SNS = NOTIFY
+
+Dashboard = VISUALIZE
+
+CloudTrail = AUDIT
+```
