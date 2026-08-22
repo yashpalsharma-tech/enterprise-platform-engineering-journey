@@ -1131,3 +1131,272 @@ Reliable Buffering
 | Reliable fan-out                     | SNS + separate SQS queues |
 | Independent failure isolation        | SNS + SQS + DLQ           |
 ```
+
+
+
+# AWS Lambda + API Gateway Quick Reference
+
+## Lambda
+
+```text
+Event / Request
+      ↓
+AWS Lambda
+      ↓
+Execute Code
+```
+
+Think:
+
+```text
+Serverless Compute
+```
+
+---
+
+## API Gateway + Lambda
+
+```text
+Client
+  ↓
+API Gateway
+  ↓
+Lambda
+  ↓
+Backend
+```
+
+Use for:
+
+```text
+Serverless API
+```
+
+---
+
+## Execution Role
+
+```text
+Lambda
+   ↓
+IAM Execution Role
+   ↓
+AWS Resource
+```
+
+Question:
+
+```text
+What can Lambda access?
+```
+
+---
+
+## Resource-Based Policy
+
+```text
+API Gateway
+     ↓
+Lambda Resource-Based Policy
+     ↓
+Lambda
+```
+
+Question:
+
+```text
+Who can invoke Lambda?
+```
+
+---
+
+## Lambda Timeout
+
+```text
+Maximum
+15 minutes
+900 seconds
+```
+
+---
+
+## Concurrency
+
+```text
+Number of Lambda invocations
+executing simultaneously
+```
+
+---
+
+## Reserved Concurrency
+
+```text
+Reserve + Cap
+Lambda Concurrency
+```
+
+Useful for:
+
+```text
+Protect downstream systems
+```
+
+---
+
+## Provisioned Concurrency
+
+```text
+Pre-initialized
+Lambda environments
+```
+
+Useful for:
+
+```text
+Reduce Cold Starts
+```
+
+---
+
+## Cold Start
+
+```text
+Request
+   ↓
+Initialize Environment
+   ↓
+Execute Function
+```
+
+---
+
+## Configuration vs Secrets
+
+```text
+Normal Configuration
+      ↓
+Environment Variables
+
+Sensitive Credentials
+      ↓
+Secrets Manager
+```
+
+---
+
+## Lambda + SQS
+
+```text
+Application
+     ↓
+SQS
+     ↓
+Lambda
+```
+
+Think:
+
+```text
+Buffer + Decouple + Serverless Processing
+```
+
+---
+
+## Lambda Monitoring
+
+```text
+Lambda
+   ↓
+CloudWatch Metrics
+   ↓
+CloudWatch Alarm
+   ↓
+SNS
+   ↓
+Operations
+```
+
+Important metrics:
+
+```text
+Invocations
+Errors
+Duration
+Throttles
+```
+
+---
+
+## Invocation Types
+
+```text
+Synchronous
+→ Caller waits for response
+
+Asynchronous
+→ Caller does not wait for processing result
+
+SQS Event Source
+→ Messages buffered in SQS
+→ Lambda processes messages
+```
+
+---
+
+## Serverless API
+
+```text
+Users
+  ↓
+API Gateway
+  ↓
+Lambda
+  ↓
+DynamoDB
+```
+
+---
+
+## Exam Triggers
+```text
+| Requirement                        | Answer                          |
+| ---------------------------------- | ------------------------------- |
+| Run code without managing servers  | Lambda                          |
+| Serverless HTTP API                | API Gateway + Lambda            |
+| Process S3 upload automatically    | S3 Event + Lambda               |
+| Give Lambda access to AWS resource | Execution Role                  |
+| Control who can invoke Lambda      | Resource-Based Policy           |
+| Maximum Lambda execution           | 15 minutes                      |
+| Simultaneous executions            | Concurrency                     |
+| Cap Lambda concurrency             | Reserved Concurrency            |
+| Protect downstream RDS             | Reserved Concurrency            |
+| Reduce cold starts                 | Provisioned Concurrency         |
+| Function configuration             | Environment Variables           |
+| Sensitive credentials              | Secrets Manager                 |
+| Buffer Lambda workload             | SQS                             |
+| Monitor Lambda errors              | CloudWatch                      |
+| Alert on Lambda errors             | CloudWatch Alarm                |
+| Notify operations                  | SNS                             |
+| Lambda logs                        | CloudWatch Logs                 |
+| Concurrency unavailable            | Throttling                      |
+| Caller waits for result            | Synchronous                     |
+| Caller does not wait               | Asynchronous                    |
+| Serverless API + database          | API Gateway + Lambda + DynamoDB |
+
+```
+
+### Memory Shortcut
+
+```text
+Lambda          = COMPUTE
+API Gateway     = API
+Execution Role  = ACCESS OUT
+Resource Policy = ACCESS IN
+Reserved        = LIMIT / RESERVE
+Provisioned     = READY
+CloudWatch      = MONITOR
+SNS             = NOTIFY
+SQS             = BUFFER
+DynamoDB        = DATA
+```
