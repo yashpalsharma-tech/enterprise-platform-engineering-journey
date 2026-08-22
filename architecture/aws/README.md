@@ -1207,5 +1207,130 @@ flowchart TD
 
 
 
+**API Gateway + Lambda**
+```mermaid
+
+flowchart LR
+
+    User[Mobile / Web Client]
+    API[Amazon API Gateway]
+    Lambda[AWS Lambda]
+    DB[Amazon DynamoDB]
+
+    User -->|HTTP Request| API
+    API --> Lambda
+    Lambda --> DB
+    DB --> Lambda
+    Lambda --> API
+    API -->|HTTP Response| User
+
+```
+
+
+**S3 Event + Lambda**
+
+```mermaid
+
+flowchart LR
+
+    User[User]
+    S3[Amazon S3]
+    Lambda[AWS Lambda]
+    Output[Processed Object]
+
+    User -->|Upload Object| S3
+    S3 -->|Object Created Event| Lambda
+    Lambda --> Output
+
+```
+
+
+**Lambda IAM Permissions**
+
+```mermaid
+flowchart TD
+
+    API[API Gateway]
+    Policy[Lambda Resource-Based Policy]
+    Lambda[AWS Lambda]
+    Role[IAM Execution Role]
+    DB[DynamoDB]
+
+    API -->|Permission to Invoke| Policy
+    Policy --> Lambda
+    Lambda --> Role
+    Role -->|Permission to Access| DB
+```
+
+
+**SQS + Lambda**
+
+```mermaid
+flowchart LR
+
+    App[Application]
+    Queue[Amazon SQS]
+    Lambda[AWS Lambda]
+    Logic[Business Logic]
+
+    App --> Queue
+    Queue --> Lambda
+    Lambda --> Logic
+```
+
+
+**Lambda Monitoring**
+
+```mermaid
+
+flowchart LR
+
+    Lambda[AWS Lambda]
+    CW[CloudWatch Metrics]
+    Alarm[CloudWatch Alarm]
+    SNS[Amazon SNS]
+    Ops[Operations Team]
+
+    Lambda --> CW
+    CW --> Alarm
+    Alarm --> SNS
+    SNS --> Ops
+
+```
+
+
+**Production Serverless Architecture**
+
+```mermaid
+
+flowchart TD
+
+    Users[Users]
+    API[API Gateway]
+    Lambda[AWS Lambda]
+    PC[Provisioned Concurrency]
+    Role[IAM Execution Role]
+    DB[DynamoDB]
+
+    CW[CloudWatch]
+    Alarm[CloudWatch Alarm]
+    SNS[Amazon SNS]
+    Ops[Operations Team]
+
+    Users --> API
+    API --> Lambda
+
+    PC --> Lambda
+
+    Lambda --> Role
+    Role --> DB
+
+    Lambda --> CW
+    CW --> Alarm
+    Alarm --> SNS
+    SNS --> Ops
+
+```
+
 
 
