@@ -863,3 +863,113 @@ Q421. Design an architecture where repeatedly failing messages are isolated for 
 Q422. Design an Auto Scaling architecture where EC2 workers scale according to SQS queue depth.
 
 Q423. Design a reliable event-driven architecture using SNS, SQS and DLQs for multiple independent services.
+
+## AWS Lambda and API Gateway Interview Questions
+
+Q424. What is AWS Lambda?
+
+Q425. Why is AWS Lambda called serverless compute?
+
+Q426. What are the main benefits of using AWS Lambda?
+
+Q427. What is a Lambda function?
+
+Q428. What is a Lambda trigger?
+
+Q429. Give examples of AWS services that can trigger or act as event sources for Lambda.
+
+Q430. How can S3 and Lambda work together?
+
+Q431. How would you automatically process an image when it is uploaded to S3?
+
+Q432. What is Amazon API Gateway?
+
+Q433. How do API Gateway and Lambda work together?
+
+Q434. How would you build a serverless REST/HTTP API?
+
+Q435. Explain the architecture API Gateway → Lambda → DynamoDB.
+
+Q436. What is a Lambda Execution Role?
+
+Q437. Why should Lambda use an IAM role instead of hard-coded AWS access keys?
+
+Q438. How would you allow a Lambda function to read objects from a private S3 bucket?
+
+Q439. How would you allow Lambda to access DynamoDB?
+
+Q440. What is a Lambda resource-based policy?
+
+Q441. What is the difference between a Lambda Execution Role and a Lambda resource-based policy?
+
+Q442. How would API Gateway receive permission to invoke a Lambda function?
+
+Q443. What is the Lambda function timeout?
+
+Q444. What is the maximum AWS Lambda execution timeout?
+
+Q445. What happens when a Lambda function reaches its configured timeout?
+
+Q446. When might Lambda not be suitable for a long-running workload?
+
+Q447. How does the AWS Lambda pricing model differ conceptually from continuously running EC2 capacity?
+
+Q448. What is Lambda concurrency?
+
+Q449. Why can high Lambda concurrency cause problems for downstream systems?
+
+Q450. What is Reserved Concurrency?
+
+Q451. How can Reserved Concurrency help protect an RDS database?
+
+Q452. What is Provisioned Concurrency?
+
+Q453. What is a Lambda cold start?
+
+Q454. How can Provisioned Concurrency reduce cold-start latency?
+
+Q455. What is the difference between Reserved Concurrency and Provisioned Concurrency?
+
+Q456. What are Lambda Environment Variables?
+
+Q457. Why should application configuration be separated from Lambda code?
+
+Q458. Where should sensitive credentials such as database passwords normally be stored?
+
+Q459. How can Lambda and AWS Secrets Manager work together?
+
+Q460. How can Lambda process messages from Amazon SQS?
+
+Q461. What is the benefit of placing SQS between an application and Lambda?
+
+Q462. How does SQS provide buffering for Lambda workloads?
+
+Q463. Which Lambda metrics can be monitored using CloudWatch?
+
+Q464. How would you monitor Lambda errors?
+
+Q465. How would you notify an operations team when Lambda errors exceed a threshold?
+
+Q466. Where can Lambda application logs be collected?
+
+Q467. What is Lambda throttling?
+
+Q468. What can happen when a Lambda function reaches its concurrency limit?
+
+Q469. What is synchronous Lambda invocation?
+
+Q470. Give an example of synchronous Lambda invocation.
+
+Q471. What is asynchronous Lambda invocation?
+
+Q472. What is the difference between synchronous and asynchronous Lambda invocation?
+
+Q473. How is SQS event-source processing different from a direct asynchronous Lambda invocation?
+
+Q474. Explain API Gateway → Lambda → DynamoDB as a serverless application architecture.
+
+Q475. Design a serverless application that minimizes Lambda cold-start latency.
+
+Q476. Design monitoring and alerting for a production Lambda application.
+
+Q477. Design a complete serverless architecture using API Gateway, Lambda, IAM, DynamoDB, CloudWatch and SNS.
