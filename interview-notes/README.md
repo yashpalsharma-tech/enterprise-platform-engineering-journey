@@ -973,3 +973,127 @@ Q475. Design a serverless application that minimizes Lambda cold-start latency.
 Q476. Design monitoring and alerting for a production Lambda application.
 
 Q477. Design a complete serverless architecture using API Gateway, Lambda, IAM, DynamoDB, CloudWatch and SNS.
+
+## Amazon DynamoDB Interview Questions
+
+Q478. What is Amazon DynamoDB?
+
+Q479. Why is DynamoDB called a serverless NoSQL database?
+
+Q480. What is the difference between DynamoDB and Amazon RDS?
+
+Q481. When would you choose DynamoDB instead of RDS?
+
+Q482. What is a DynamoDB Table?
+
+Q483. What is an Item in DynamoDB?
+
+Q484. What is an Attribute in DynamoDB?
+
+Q485. What is a DynamoDB Primary Key?
+
+Q486. What is a Partition Key?
+
+Q487. What is a simple primary key in DynamoDB?
+
+Q488. What is a composite primary key?
+
+Q489. What is a Sort Key?
+
+Q490. Why would you use a Partition Key and Sort Key together?
+
+Q491. How would you design a table where one customer can have many orders?
+
+Q492. How would you design a DynamoDB table for IoT readings by device and timestamp?
+
+Q493. What is a DynamoDB Query?
+
+Q494. What is a DynamoDB Scan?
+
+Q495. What is the difference between Query and Scan?
+
+Q496. Why should Query generally be preferred over Scan when the access pattern supports it?
+
+Q497. How can a Sort Key be used for range queries?
+
+Q498. What is a DynamoDB Secondary Index?
+
+Q499. What is a Global Secondary Index (GSI)?
+
+Q500. When would you use a GSI?
+
+Q501. Can a GSI use a different Partition Key from the base table?
+
+Q502. Can a GSI be added after a DynamoDB table has been created?
+
+Q503. What is a Local Secondary Index (LSI)?
+
+Q504. What is the key difference between GSI and LSI?
+
+Q505. Why must an LSI be defined when the DynamoDB table is created?
+
+Q506. What is an Eventually Consistent Read?
+
+Q507. What is a Strongly Consistent Read?
+
+Q508. What is the difference between Eventually and Strongly Consistent Reads?
+
+Q509. Does a GSI support Strongly Consistent Reads?
+
+Q510. Do DynamoDB base tables support Strongly Consistent Reads?
+
+Q511. Does an LSI support Strongly Consistent Reads?
+
+Q512. What are the DynamoDB capacity modes?
+
+Q513. What is DynamoDB On-Demand Capacity?
+
+Q514. When would you choose On-Demand mode?
+
+Q515. What is DynamoDB Provisioned Capacity?
+
+Q516. What are RCU and WCU?
+
+Q517. When would you choose Provisioned Capacity?
+
+Q518. How can DynamoDB Auto Scaling work with Provisioned Capacity?
+
+Q519. What is DynamoDB TTL?
+
+Q520. When would you use TTL?
+
+Q521. Does DynamoDB TTL guarantee deletion at the exact expiration time?
+
+Q522. What are DynamoDB Streams?
+
+Q523. Which item-level changes can DynamoDB Streams capture?
+
+Q524. How do DynamoDB Streams and Lambda work together?
+
+Q525. What is DynamoDB Accelerator (DAX)?
+
+Q526. When would you use DAX?
+
+Q527. What is DynamoDB Point-in-Time Recovery (PITR)?
+
+Q528. What is the difference between PITR and an On-Demand Backup?
+
+Q529. How is DynamoDB data encrypted at rest?
+
+Q530. How does AWS KMS integrate with DynamoDB?
+
+Q531. What are DynamoDB Global Tables?
+
+Q532. When would you use DynamoDB Global Tables?
+
+Q533. What is a hot partition or hot key in DynamoDB?
+
+Q534. Why is high cardinality important when selecting a Partition Key?
+
+Q535. Why might Country be a poor Partition Key if most traffic comes from one country?
+
+Q536. How would you efficiently query an existing production table by an attribute that is not part of its current primary key?
+
+Q537. Design a serverless application using API Gateway, Lambda and DynamoDB.
+
+Q538. Design a production DynamoDB architecture using appropriate keys, GSI, Streams, TTL, DAX, PITR, KMS and capacity mode.
