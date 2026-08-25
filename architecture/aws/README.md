@@ -1333,4 +1333,142 @@ flowchart TD
 ```
 
 
+**Serverless DynamoDB Architecture**
+
+```mermaid
+
+flowchart LR
+
+    Users[Users]
+    API[API Gateway]
+    Lambda[AWS Lambda]
+    DB[Amazon DynamoDB]
+
+    Users --> API
+    API --> Lambda
+    Lambda --> DB
+```
+
+
+**Composite Primary Key**
+
+```mermaid
+flowchart TD
+
+    Table[DynamoDB Orders Table]
+
+    Customer[Partition Key<br/>CustomerID]
+    Order[Sort Key<br/>OrderID]
+
+    Table --> Customer
+    Customer --> Order
+```
+
+**GSI Access Pattern**
+
+```mermaid
+
+flowchart TD
+
+    Table[Orders Table<br/>PK CustomerID<br/>SK OrderID]
+    GSI[Global Secondary Index<br/>PK OrderStatus<br/>SK OrderDate]
+
+    Table --> GSI
+    GSI --> Pending[Query OrderStatus = PENDING]
+
+```
+
+
+**DynamoDB Streams + Lambda**
+
+```mermaid
+
+flowchart LR
+
+    App[Application]
+    DB[DynamoDB]
+    Stream[DynamoDB Stream]
+    Lambda[AWS Lambda]
+    Process[Downstream Processing]
+
+    App --> DB
+    DB --> Stream
+    Stream --> Lambda
+    Lambda --> Process
+
+```
+
+**DAX**
+
+```mermaid
+
+flowchart LR
+
+    App[Application]
+    DAX[DynamoDB Accelerator - DAX]
+    DB[DynamoDB]
+
+    App --> DAX
+    DAX --> DB
+
+```
+
+
+**Global Tables**
+
+```mermaid
+
+flowchart TD
+
+    App[Global Application]
+
+    SG[DynamoDB<br/>Singapore]
+    EU[DynamoDB<br/>Europe]
+    US[DynamoDB<br/>USA]
+
+    App --> SG
+    App --> EU
+    App --> US
+
+    SG <--> EU
+    EU <--> US
+    US <--> SG
+
+```
+
+**Complete DynamoDB Architecture**
+```mermaid
+flowchart TD
+
+    Users[Users]
+    API[API Gateway]
+    Lambda[AWS Lambda]
+    DB[DynamoDB]
+
+    GSI[GSI<br/>OrderStatus]
+    Stream[DynamoDB Stream]
+    EventLambda[Event Processing Lambda]
+    TTL[TTL]
+    DAX[DAX]
+    PITR[PITR]
+    KMS[AWS KMS]
+
+    Users --> API
+    API --> Lambda
+    Lambda --> DAX
+    DAX --> DB
+
+    DB --> GSI
+    DB --> Stream
+    Stream --> EventLambda
+
+    DB --> TTL
+    DB --> PITR
+    KMS --> DB
+
+```
+
+
+
+
 
