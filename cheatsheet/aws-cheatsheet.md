@@ -1689,6 +1689,7 @@ Hot Key / Concentrated Activity
 ### Memory Shortcut
 
 ```text
+
 DynamoDB = NoSQL
 PK       = DISTRIBUTE / IDENTIFY
 SK       = ORDER / RANGE
