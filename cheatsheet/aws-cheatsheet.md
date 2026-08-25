@@ -1705,4 +1705,5 @@ DAX      = CACHE
 PITR     = RECOVER
 KMS      = ENCRYPT
 Global   = MULTI-REGION
+
 ```
