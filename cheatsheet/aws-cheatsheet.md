@@ -1400,3 +1400,309 @@ SNS             = NOTIFY
 SQS             = BUFFER
 DynamoDB        = DATA
 ```
+
+
+
+# Amazon DynamoDB Quick Reference
+
+## DynamoDB
+
+```text
+Serverless
++
+NoSQL
++
+Low-Latency Key-Based Access
+```
+
+---
+
+## Data Model
+
+```text
+Table
+ ↓
+Items
+ ↓
+Attributes
+```
+
+---
+
+## Keys
+
+```text
+Simple Primary Key
+→ Partition Key
+
+Composite Primary Key
+→ Partition Key + Sort Key
+```
+
+Example:
+
+```text
+PK = CustomerID
+SK = OrderID
+```
+
+---
+
+## Query vs Scan
+
+```text
+Know Partition Key
+       ↓
+     Query
+
+Need to examine whole table/index
+       ↓
+      Scan
+```
+
+Prefer efficient key-based Query access patterns over repeated full-table scans.
+
+---
+
+## GSI
+
+```text
+Global Secondary Index
+
+Different Partition Key allowed
+Different Sort Key allowed
+Can be added later
+Eventually Consistent Reads only
+```
+
+Think:
+
+```text
+NEW ACCESS PATTERN
+        ↓
+       GSI
+```
+
+---
+
+## LSI
+
+```text
+Local Secondary Index
+
+Same Partition Key
+Different Sort Key
+Defined at table creation
+Strong or eventual reads
+```
+
+---
+
+## GSI vs LSI
+
+```text
+GSI
+→ Different PK allowed
+→ Add later
+→ Eventual only
+
+LSI
+→ Same PK
+→ Different SK
+→ Create with table
+→ Strong read possible
+```
+
+---
+
+## Read Consistency
+
+```text
+Eventually Consistent
+→ May temporarily return older data
+
+Strongly Consistent
+→ Latest successfully completed write
+```
+
+Support:
+
+```text
+Base Table → Eventual + Strong
+LSI        → Eventual + Strong
+GSI        → Eventual Only
+```
+
+---
+
+## Capacity Modes
+
+```text
+Unpredictable Traffic
+        ↓
+     On-Demand
+
+Predictable Traffic
+        ↓
+    Provisioned
+        ↓
+     RCU + WCU
+```
+
+---
+
+## TTL
+
+```text
+Temporary Data
+      ↓
+TTL Attribute
+      ↓
+Automatic Asynchronous Expiration
+```
+
+---
+
+## Streams
+
+```text
+INSERT / MODIFY / REMOVE
+          ↓
+DynamoDB Stream
+          ↓
+Lambda
+```
+
+---
+
+## DAX
+
+```text
+Read Heavy
++
+Repeated Reads
++
+Very Low Latency
+      ↓
+     DAX
+```
+
+---
+
+## Backup
+
+```text
+Continuous Backup
++
+Point-in-Time Restore
+        ↓
+       PITR
+
+Take Backup Now
+        ↓
+On-Demand Backup
+```
+
+---
+
+## Encryption
+
+```text
+DynamoDB
+   ↓
+Encryption at Rest
+   ↓
+AWS KMS
+```
+
+---
+
+## Global Tables
+
+```text
+Multi-Region
++
+Multi-Active
++
+DynamoDB
+      ↓
+Global Tables
+```
+
+---
+
+## Partition-Key Design
+
+```text
+Good Partition Key
+
+High Cardinality
+      +
+Distributed Access
+      +
+Supports Query Patterns
+```
+
+Avoid:
+
+```text
+Most traffic
+     ↓
+One/Few Key Values
+     ↓
+Hot Key / Concentrated Activity
+```
+
+---
+
+## Exam Triggers
+
+| Requirement | Answer |
+|---|---|
+| Serverless NoSQL database | DynamoDB |
+| Unique item identification | Primary Key |
+| Group related records | Partition Key + Sort Key |
+| Retrieve by Partition Key | Query |
+| Range within same Partition Key | Sort Key |
+| Full table/index examination | Scan |
+| Alternative Partition Key | GSI |
+| Add index after table creation | GSI |
+| Same PK + alternative SK | LSI |
+| Strong read required | Strongly Consistent Read |
+| Strong read from GSI | Not supported |
+| Unpredictable traffic | On-Demand |
+| Predictable capacity | Provisioned |
+| Provisioned reads | RCU |
+| Provisioned writes | WCU |
+| Expire temporary items | TTL |
+| Capture item changes | Streams |
+| Process DynamoDB changes | Streams + Lambda |
+| Cache repeated DynamoDB reads | DAX |
+| Continuous backup | PITR |
+| Backup immediately | On-Demand Backup |
+| Encryption at rest | KMS |
+| Multi-Region DynamoDB | Global Tables |
+| Avoid hot keys | High-cardinality distributed PK |
+| Query by new attribute on existing table | GSI + Query |
+```
+
+### Memory Shortcut
+
+```text
+DynamoDB = NoSQL
+PK       = DISTRIBUTE / IDENTIFY
+SK       = ORDER / RANGE
+Query    = TARGET
+Scan     = EVERYTHING
+GSI      = NEW ACCESS PATTERN
+LSI      = SAME PK
+Strong   = LATEST
+OnDemand = UNPREDICTABLE
+Provisioned = RCU/WCU
+TTL      = EXPIRE
+Streams  = CHANGES
+DAX      = CACHE
+PITR     = RECOVER
+KMS      = ENCRYPT
+Global   = MULTI-REGION
+```
